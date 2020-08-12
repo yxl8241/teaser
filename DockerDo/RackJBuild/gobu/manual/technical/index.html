@@ -1,0 +1,305 @@
+<html>
+	<head><title>GOBU - Technical Section</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">home</a></td></tr></table>
+	<body>
+		<h1><a name="top">Technical Section</a></h1>
+		In this page we describe GOBU file formats and utilities that help preparing your own data.
+		
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#preface">Preface</a>
+		<li><a href="#formats">GOBU File Formats</a>
+			<ol type=a>
+			<li><a href="#nodeString">Node String</a>
+				<ul>
+				<li><a href="#pNote">Special Note for P-Nodes</a>
+				</ul>
+			<li><a href="#listFormat">List Format</a>
+			<li><a href="#treeFormat">Tree Format</a>
+			</ol>
+		<li><a href="#dataUtil">Data Processing Utilities</a>
+			<ol type=a>
+			<li><a href="#oboFormat">OBO-format GO file</a>
+			<li><a href="#tfmUtil">TreeFileMaker</a>
+			<li><a href="#tsUtil">TreeSorter</a>
+			<li><a href="#aaUtil">AddAnnotation</a>
+			<li><a href="#ecUtil">ExpressionCounter</a>
+			<li><a href="#slimMapUtil">GOSlimMapper</a>
+			<li><a href="#tfsUtil">TreeFromSet</a>
+			<li><a href="#entrezGeneUtil">Accessing EntrezGene database</a>
+			</ol>
+		<li><a href="#steps">Suggested Steps</a>
+		</ol>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="preface">Preface</a></h3>
+		This document is written by following rules:
+		<ul>
+		<li>GOBU design is based on some <i><b>definitions</b></i>, so we made the first appearance of a GOBU-jargon <i><b>bold and italic</b></i>.
+		<li>To avoid ambiguity, we use the following replacements if necessary:
+			<ol>
+			<li><font color=green>&lt;TAB&gt;</font> for a tab character
+			<li><font color=green>&lt;Space&gt;</font> for a space character
+			</ol>
+		</ul>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="formats">GOBU File Formats</a></h3>
+		We strongly recommend you to read at least <a href="#nodeString">Node String</a> and <a href="#listFormat">List Format</a> sections.
+
+		<h5><a name="nodeString">Node String</a></h5>
+		In GOBU's design, every <a href="../operational/index.html#userNode">user node</a> has its own <i><b>node string</b></i>. The node string describes node characteristics, including type and content. Based on this understanding, we learned that there must be at least two fields in a node string, i.e. <i><b>type field</b></i> and <i><b>content field</b></i>.<p>
+		To identify these two fields in a single string, GOBU treats a colon (':') as the <i><b>field separator</b></i>. That is, string "aa:bb" means "aa" as the type field and "bb" as the content field. It should be noticed that such a design will not permit strings containing colons as type fields. To remedy this problem, we introduced the use of <i><b>escape character</b></i> (anti-slash, '\') to node string processing where characters exactly behind escape characters will be processed without any special meaning. In GOBU source code, we implement above ideas in <i>bio301.dataproc.EscapeStringTokenizer</i> (this class name is just a reference for programmers). EscapeStringTokenizer produces a "processed" type field and an "unprocessed" content field as in the following table:
+		<center><table border=2>
+			<tr align=center><td rowspan=2><i>input</i></td> <td colspan=2><i>output</i></td></tr>
+			<tr align=center><td><i>type</i></td> <td><i>content</i></td></tr>
+
+			<tr align=center><td>GO:0004567</td> <td>GO</td> <td>0004567</td></tr>
+			<tr align=center><td>G\O\::0\0\04567</td> <td>GO:</td> <td>0\0\04567</td></tr>
+			<tr align=center><td>G\\O\::0\0\04567</td> <td>G\O:</td> <td>0\0\04567</td></tr>
+		</table></center><p>
+		The following table specifies type fields and content fields of all <a href="../operational/index.html#userNode">five classes</a> of user nodes:
+		<center><table border=2>
+			<tr align=center><td><i>class</i></td> <td><i>type</i></td>  <td><i>content</i></td> <td align=left><i>example</i></td></tr>
+
+			<tr align=center><td>R-nodes</td> <td>RP</td> <td>any</td> <td align=left>RP:LL.1542</td></tr>
+			<tr align=center><td>GO annotations</td> <td>GO</td> <td>integer</td> <td align=left>GO:0008372</td></tr>
+			<tr align=center><td>P-nodes</td> <td>PR</td> <td>any</td> <td align=left>PR:LOC:(240773309,240816925)<br>@chr1@Human</td></tr>
+			<tr align=center><td>Unit nodes</td> <td>UN</td> <td>any</td> <td align=left>UN:group1</td></tr>
+			<tr align=center><td>normal nodes</td> <td>otherwise</td> <td>any</td> <td align=left>name:CYMP</td></tr>
+		</table></center><p>
+		In the user tree, user nodes will be displayed with different icons according their classes. Node names will be specified according the following table:
+		<center><table border=2>
+			<tr align=center><td rowspan=2><i>class</i></td> <td colspan=2><i>icon</i></td>  <td rowspan=2><i>node name</i></td></tr>
+			<tr align=center><td><i>colored</i></td> <td><i>uncolored</i></td></tr>
+
+			<tr align=center><td>R-nodes</td> <td><image src="rp.GIF"></td> <td><image src="rp_.GIF"></td> <td>content</td></tr>
+			<tr align=center><td>GO annotations</td> <td><image src="go.GIF"></td> <td><image src="go_.GIF"></td> <td>corresponding GO term</td></tr>
+			<tr align=center><td>P-nodes</td> <td><image src="pr.GIF"></td> <td><image src="pr_.GIF"></td> <td>content</td></tr>
+			<tr align=center><td>Unit nodes</td> <td><image src="un.GIF"></td> <td><image src="un_.GIF"></td> <td>content</td></tr>
+			<tr align=center><td>normal nodes</td> <td><image src="has.GIF"></td> <td><image src="has_.GIF"></td> <td>node string<br>(processed type field, if any)</td></tr>
+		</table></center><p>
+		
+		<h6><a name="pNote">Special Note for P-Nodes</a></h6>
+		P-nodes are designed for reprepresenting user-defined data types, so their node names will be processed by EscapeStringTokenizer for determining their data types. If there is no field separator in a node name, the node name itself will be treated as the data type field.
+
+		<h5><a name="listFormat">List Format</a></h5>
+		List format is the first GOBU file format, it is very easy to produce a list format file using database queries. In list format, <i>every line of the file means a tree path to be added to the user tree root, and every path is encoded by node strings with <font color=green>&lt;TAB&gt;</font> as internal edges</i>. For example, the tree paths in Fig. 1 should be described by the following lines:
+		<table border=0 align=center>
+			<tr><td><image src="tech001.png" align=right></td></tr>
+			<tr align=center><td><b>Fig. 1</b></td></tr>
+		</table>
+		<table border=2 align=center>
+			<tr><td>
+<pre>UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>conf: 100.0
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0005868
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0000166
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0005524
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0017111
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0042623
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0003777
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0007018
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>GO:0007052
+UN:group6<font color=green>&lt;TAB&gt;</font>tax9606<font color=green>&lt;TAB&gt;</font>RP:33350932<font color=green>&lt;TAB&gt;</font>PR:LOC:(100421045,100507307)@chr14@Human</pre>
+			</td></tr>
+		</table><p>
+		To generate a correct list format file, just remember to generate paths that cover the whole user tree. You don't need to generate these lines in a special order, but notice that tree siblings (nodes having the same parent node) will be sorted according the order of their first appearance. We believe that a qualified technician could easily generate this kind of data using simple SQL queries. Note that list format file names should not end with ".tree".
+		
+		<h5><a name="treeFormat">Tree Format</a></h5>
+		Unlike the list format, every line of a tree format file contains exactly one node string with leading <i><b>depth</b></i> <font color=green>&lt;Space&gt;</font>, where depth of a given node is the number of edges between this node and tree root. The order of lines should be the same with the visiting order of depth-first-search. For example, the user tree in Fig. 2 is described by the following lines:
+		<table border=0 align=center>
+			<tr><td><image src="tech002.png" align=right></td></tr>
+			<tr align=center><td><b>Fig. 2</b></td></tr>
+		</table>
+		<table border=2 align=center>
+			<tr><td>
+<pre>User Data
+<font color=green>&lt;Space&gt;</font>chr1
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>1
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>RP:LL.1542
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>name:CYMP
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>RP:LL.1772
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>name:DNAH14
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>GO:0008372
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>GO:0003777
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>GO:0000004
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>RP:LL.1989
+<font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font><font color=green>&lt;Space&gt;</font>name:EKV
+</pre>
+			</td></tr>
+		</table><p>
+		Note that tree format file names must end with ".tree".<p>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="dataUtil">Data Processing Utilities</a></h3>
+		The following utilities require more memory than the default size provided by Java Virtual Machine (JVM). We advise you to use an option like "-Xmx800M" (an option of SUN JVM) in your java command. All classes described in this section are placed in the bio301.goutil.gobu.data package.
+
+		<h5><a name="oboFormat">OBO-format GO file</a></h5>
+		From version <b>0.95</b>, the OBO-format GO file is supported. In the case that you are using GOBU 0.95 or later, you may replace the options &quot;-G data\component.ontology.txt -G data\function.ontology.txt -G data\function.ontology.txt&quot; with &quot;-OBO data\gene_ontology.1_2.obo.txt&quot; for all tools described in this section.
+
+		<h5><a name="tfmUtil">TreeFileMaker</a></h5>
+		<ul>
+		<li><i>Purpose</i>: To translate a list format file into a tree format file.
+		<li><i>Options</i>:
+			<ol>
+			<li>-I: Specify the input file (list format)
+			<li>-O: Specify the output file (tree format)
+			<li>-G: Specify GO data files, we advise you to use this option three times for loading component, function and process GO data.
+			</ol>
+		<li><i>Example command</i> (Windows command line window, in GOBU folder): java -Xmx600M -classpath gobu.jar bio301.goutil.gobu.data.TreeFileMaker -I user\LocusData -O user\LocusData.to.tree -G data\component.ontology.txt -G data\function.ontology.txt -G data\function.ontology.txt
+		</ul>
+
+		<h5><a name="tsUtil">TreeSorter</a></h5>
+		<ul>
+		<li><i>Purpose</i>: Given a tree format file, sort tree siblings in an easy-browseable order (see Fig. 3 for an example).
+		<table border=0 align=center>
+			<tr><td align=center>before</td> <td align=center>after</td></tr>
+			<tr>
+				<td><a href="fig03.html" target=_blank><image src="tech003t.png" alt="click to enlarge" align=right></a></td>
+				<td><a href="fig03.html" target=_blank><image src="tech004t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+			<tr align=center><td colspan=2><b>Fig. 3</b></td></tr>
+		</table>
+		<li><i>Options</i>:
+			<ol>
+			<li>-I: Specify the input file (tree format)
+			<li>-O: Specify the output file (tree format)
+			<li>-G: Specify GO data files, we advise you to use this option three times for loading component, function and process GO data.
+			</ol>
+		<li><i>Example command</i> (Windows command line window, in GOBU folder): java -Xmx600M -classpath gobu.jar bio301.goutil.gobu.data.TreeSorter -I user\LocusData.to.tree -O user\LocusData.ts.tree -G data\component.ontology.txt -G data\function.ontology.txt -G data\process.ontology.txt
+		</ul>
+		<br clear=all>
+
+		<h5><a name="aaUtil">AddAnnotation</a></h5>
+		<ul>
+		<li><i>Purpose</i>: Given a tree format file and a list format file, append sub-tree information (described in the list format file) to the tree format file (see Fig. 4 for an example).
+		<table border=0 align=center>
+			<tr>
+				<td><a href="fig04.html" target=_blank><image src="tech005t.png" alt="click to enlarge" align=right></a></td>
+				<td>+</td>
+				<td><a href="fig04.html" target=_blank><image src="tech006t.png" alt="click to enlarge" align=right></a></td>
+				<td>=</td>
+				<td><a href="fig04.html" target=_blank><image src="tech007t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+			<tr align=center><td colspan=5><b>Fig. 4</b></td></tr>
+		</table>
+		<li><i>Options</i>:
+			<ol>
+			<li>-I: Specify the input file (tree format)
+			<li>-S: Specify the sub-tree information file (list format)
+			<li>-O: Specify the output file (tree format)
+			<li>-G: Specify GO data files, we advise you to use this option three times for loading component, function and process GO data.
+			</ol>
+		<li><i>Description</i>: This program will first load input file as a user tree, then load sub-tree file as another user tree. By recording every depth-1 user nodes in second user tree, this program then looking for these depth-1 user nodes in first user tree. Once found a recorded user node in first tree, this program will attach corresponding sub-tree (of second tree) to first tree.
+		</ul>
+		<br clear=all>
+
+		<h5><a name="ecUtil">ExpressionCounter</a></h5>
+		<ul>
+		<li><i>Purpose</i>: Given data described in a tree format file, compute numbers of genes or summation of specified values of GO terms.
+		<li><i>Options</i>:
+			<ol>
+			<li>-I: Specify the input file (tree format)
+			<li>-O: Specify the output file (text format)
+			<li>-OBO: Specify the OBO-format GO data file
+			<li>-P: Specify the property to be summed up, only numbers of genes will be computed if this is not specified. Be very sure that you are defining <a href="#nodeString">P-nodes</a> correctly.
+			<li>-L: There should be two parameters for this options <i>x</i> &lt; <i>y</i>. This option will restrict GO terms to be reported to be at levels <i>x</i> and <i>y</i>. If this option is not applied, all GO terms will be reported.
+			</ol>
+		</ul>
+		<br clear=all>
+
+		<h5><a name="slimMapUtil">GOSlimMapper</a></h5>
+		<ul>
+		<li><i>Purpose</i>: Transform a user data with GO annotation to be the same data with GO annotation within specified slimmed GO.
+		<li><i>Options</i>:
+			<ol>
+			<li>-S: GO slim file
+			<li>-OBO: the OBO-format GO data file
+			<li>-I: input file (tree format)
+			<li>-O: output file (tree format)
+			</ol>
+		</ul>
+		<br clear=all>
+
+		<h5><a name="tfsUtil">TreeFromSet</a></h5>
+		<ul>
+		<li><i>Purpose</i>: Given a reference tree, which usually contains data of a whole genome, generate trees of several interested gene sets. This tool would be very useful for applications of the <a href="../plugins/pl007/index.html">MultiView plugin</a>.
+		<li><i>Options</i>:
+			<ol>
+			<li>-R: the reference tree
+			<li>-OBO: the OBO-format GO data file
+			<li>-N: There are two parameters for this option. The first parameter specifies the name of this gene set, and the second parameter specifies the file contains the gene set. Be sure that genes are defined as <a href="#nodeString">R-nodes</a> in the reference tree and that the accessions are the same with these R-nodes.
+			</ol>
+		</ul>
+		<br clear=all>
+
+		<h5><a name="entrezGeneUtil">Accessing EntrezGene database</a></h5>
+		<ul>
+		<li><i>Purpose</i>: Two simple programs are provided for extracting information from NCBI EntrezGene tables <i>gene_info</i> and <i>gene2go</i>, they are:
+			<ol>
+				<li>ExtractEntrezGene
+				<ul>
+					<li><i>Purpose</i>: Extract gene IDs from gene_info table for specified species (by taxonomy ID) and gene type (see README file in <a href="ftp://ftp.ncbi.nlm.nih.gov/gene/">NCBI EntrezGene ftp directory</a>), then organize them according their chromosome and map location (as described in <a href="../overview.html">Overview</a>).
+					<li><i>Options</i>:
+						<ol>
+						<li>-I: Specify the input file (gene_info file)
+						<li>-O: Specify the output file (tree format)
+						<li>-T: Specify the species (by taxonomy ID)
+						<li>-G: Specify the gene type
+						</ol>
+				</ul>
+				<li>ExtractEntrezGeneGO
+				<ul>
+					<li><i>Purpose</i>: Extract GO annotations from gene2go table for specified species (by taxonomy ID).
+					<li><i>Options</i>:
+						<ol>
+						<li>-I: Specify the input file (gene2go file)
+						<li>-O: Specify the output file (list format)
+						<li>-T: Specify the species (by taxonomy ID)
+						</ol>
+				</ul>
+			</ol>
+		<li><i>Example command</i> (Windows command line window, in GOBU folder, after downloading gene_info and gene2go files from <a href="ftp://ftp.ncbi.nlm.nih.gov/gene/">NCBI EntrezGene ftp directory</a>):
+			<ol>
+				<li>(<i>extract all human protein-coding gene IDs</i>) java -Xmx600M -classpath gobu.jar bio301.goutil.gobu.data.ExtractEntrezGene -I gene_info -O tmpHumanGene.tree -T 9606 -G protein-coding
+				<li>(<i>extract all human GO annotations</i>) java -Xmx600M -classpath gobu.jar bio301.goutil.gobu.data.ExtractEntrezGeneGO -I gene2go -O tmpHumanGO -T 9606
+				<li>(<i>append GO annotations</i>) java -Xmx600M -classpath gobu.jar bio301.goutil.gobu.data.AddAnnotation -I tmpHumanGene.tree -S tmpHumanGO -O tmpHumanGene.tree -G data\component.ontology.txt -G data\function.ontology.txt -G data\process.ontology.txt
+				<li>(<i>sort resulted tree into an easy-browseable order</i>) java -Xmx600M -classpath gobu.jar bio301.goutil.gobu.data.TreeSorter -I tmpHumanGene.tree -O HumanGene.tree -G data\component.ontology.txt -G data\function.ontology.txt -G data\function.ontology.txt
+			</ol>
+		</ul>
+		<br clear=all>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="steps">Suggested Steps</a></h3>
+		We advise you to take the following steps to build data file.
+		<ol>
+		<li><i>Identify R-nodes</i>: Make sure your basic objects, i.e., the objects you want to count in <a href="../operational/index.html#goTree">GO distribution</a>.
+		<li><i>Organize R-nodes</i>: Plan your user tree <i><b>structure part</b></i> according your data in hand, i.e., the tree content above (and including) R-nodes. For example, we organize R-nodes (gene IDs) according their located chromosome and map location (see Fig. 5).
+		<table border=0 align=center>
+			<tr><td><a href="fig05.html" target=_blank>
+				<image src="tech008t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 5</b></td></tr>
+		</table>
+		<li><i>Generate structure part</i>: If the user tree structure part information was held in your database, then it should be easy to generate a <a href="#listFormat">list format</a> data file using SQL queries. Then <a href="#tfmUtil">TreeFileMaker</a> could help to translate the data file into a <a href="#treeFormat">tree format</a> file.
+		<li><i>Appand annotations</i>: Generate annotations for R-nodes in <a href="#listFormat">list format</a> (paths should be started with R-nodes), then use <a href="#AaUtil">AddAnnotation</a> to append these annotations.
+		</ol>
+		Sometimes you may need to go through above steps a few times for a satisfied user tree data.
+		<br clear=all>
+
+	</body>
+</html>

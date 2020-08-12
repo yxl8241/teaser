@@ -1,0 +1,27 @@
+FROM ubuntu:18.04
+
+RUN apt-get update \ 
+	&& apt-get --yes --no-install-recommends install wget curl automake build-essential make subversion git \
+	unzip bzip2 gcc zlib1g-dev libncurses5-dev libncursesw5-dev openjdk-8-jdk bioperl \
+	&& apt-get clean \
+	&& apt-get purge \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN mkdir /Tools /data
+
+RUN useradd --shell /bin/bash --create-home --user-group --uid 1000 --groups sudo bictool \
+	&& echo `echo "bictool\nbictool\n" | passwd bictool` \
+	&& chown bictool:bictool /data \
+	&& chown bictool:bictool /Tools
+
+RUN chmod 777 -R /Tools
+
+USER bictool
+
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+ENV PATH=$PATH:$JAVA_HOME/bin
+ENV HOME=/home/bictool
+
+VOLUME /data 
+
+CMD ["/bin/bash"]

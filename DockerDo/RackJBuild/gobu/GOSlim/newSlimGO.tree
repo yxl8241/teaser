@@ -1,0 +1,776 @@
+%GO Root ; zeroGO
+ %cellular_component ; GO:0005575
+  %cell ; GO:0005623
+   <cell part ; GO:0044464
+    %cell projection ; GO:0042995
+     %cilium ; GO:0005929
+    %external encapsulating structure ; GO:0030312
+     %cell envelope ; GO:0030313
+     %cell wall ; GO:0005618
+    %intracellular ; GO:0005622
+     <intracellular part ; GO:0044424
+      %cytoplasm ; GO:0005737
+       <cytoplasmic part ; GO:0044444
+        %cytoplasmic chromosome ; GO:0000229
+        %cytoplasmic vesicle ; GO:0031410
+         %cytoplasmic membrane-bounded vesicle ; GO:0016023
+        %cytosol ; GO:0005829
+        %endoplasmic reticulum ; GO:0005783
+        %endosome ; GO:0005768
+        %Golgi apparatus ; GO:0005794
+        %lipid particle ; GO:0005811
+        %microbody ; GO:0042579
+         %peroxisome ; GO:0005777
+        %microtubule organizing center ; GO:0005815
+        %mitochondrion ; GO:0005739
+        %plastid ; GO:0009536
+        %ribosome ; GO:0005840
+        %vacuole ; GO:0005773
+         %lytic vacuole ; GO:0000323
+          %lysosome ; GO:0005764
+      %cytoplasmic part ; GO:0044444
+       %cytoplasmic chromosome ; GO:0000229
+       %cytoplasmic vesicle ; GO:0031410
+        %cytoplasmic membrane-bounded vesicle ; GO:0016023
+       %cytosol ; GO:0005829
+       %endoplasmic reticulum ; GO:0005783
+       %endosome ; GO:0005768
+       %Golgi apparatus ; GO:0005794
+       %lipid particle ; GO:0005811
+       %microbody ; GO:0042579
+        %peroxisome ; GO:0005777
+       %microtubule organizing center ; GO:0005815
+       %mitochondrion ; GO:0005739
+       %plastid ; GO:0009536
+       %ribosome ; GO:0005840
+       %vacuole ; GO:0005773
+        %lytic vacuole ; GO:0000323
+         %lysosome ; GO:0005764
+      %intracellular organelle ; GO:0043229
+       %cytoplasmic vesicle ; GO:0031410
+        %cytoplasmic membrane-bounded vesicle ; GO:0016023
+       %intracellular membrane-bounded organelle ; GO:0043231
+        %cytoplasmic membrane-bounded vesicle ; GO:0016023
+        %endoplasmic reticulum ; GO:0005783
+        %endosome ; GO:0005768
+        %Golgi apparatus ; GO:0005794
+        %microbody ; GO:0042579
+         %peroxisome ; GO:0005777
+        %mitochondrion ; GO:0005739
+        %nucleus ; GO:0005634
+         <nuclear part ; GO:0044428
+          %nuclear chromosome ; GO:0000228
+          %nuclear envelope ; GO:0005635
+          %nuclear lumen ; GO:0031981
+           <nucleolus ; GO:0005730
+           <nucleoplasm ; GO:0005654
+          %nucleolus ; GO:0005730
+          %nucleoplasm ; GO:0005654
+        %plastid ; GO:0009536
+        %vacuole ; GO:0005773
+         %lytic vacuole ; GO:0000323
+          %lysosome ; GO:0005764
+       %intracellular non-membrane-bounded organelle ; GO:0043232
+        %chromosome ; GO:0005694
+         %cytoplasmic chromosome ; GO:0000229
+         %nuclear chromosome ; GO:0000228
+        %cytoskeleton ; GO:0005856
+         %microtubule cytoskeleton ; GO:0015630
+          <microtubule organizing center ; GO:0005815
+        %nucleolus ; GO:0005730
+        %ribosome ; GO:0005840
+       <intracellular organelle part ; GO:0044446
+        %nuclear part ; GO:0044428
+         %nuclear chromosome ; GO:0000228
+         %nuclear envelope ; GO:0005635
+         %nuclear lumen ; GO:0031981
+          <nucleolus ; GO:0005730
+          <nucleoplasm ; GO:0005654
+         %nucleolus ; GO:0005730
+         %nucleoplasm ; GO:0005654
+        %organelle envelope ; GO:0031967
+         %nuclear envelope ; GO:0005635
+      %intracellular organelle part ; GO:0044446
+       %nuclear part ; GO:0044428
+        %nuclear chromosome ; GO:0000228
+        %nuclear envelope ; GO:0005635
+        %nuclear lumen ; GO:0031981
+         <nucleolus ; GO:0005730
+         <nucleoplasm ; GO:0005654
+        %nucleolus ; GO:0005730
+        %nucleoplasm ; GO:0005654
+       %organelle envelope ; GO:0031967
+        %nuclear envelope ; GO:0005635
+      %ribonucleoprotein complex ; GO:0030529
+       %ribosome ; GO:0005840
+    %intracellular part ; GO:0044424
+     %cytoplasm ; GO:0005737
+      <cytoplasmic part ; GO:0044444
+       %cytoplasmic chromosome ; GO:0000229
+       %cytoplasmic vesicle ; GO:0031410
+        %cytoplasmic membrane-bounded vesicle ; GO:0016023
+       %cytosol ; GO:0005829
+       %endoplasmic reticulum ; GO:0005783
+       %endosome ; GO:0005768
+       %Golgi apparatus ; GO:0005794
+       %lipid particle ; GO:0005811
+       %microbody ; GO:0042579
+        %peroxisome ; GO:0005777
+       %microtubule organizing center ; GO:0005815
+       %mitochondrion ; GO:0005739
+       %plastid ; GO:0009536
+       %ribosome ; GO:0005840
+       %vacuole ; GO:0005773
+        %lytic vacuole ; GO:0000323
+         %lysosome ; GO:0005764
+     %cytoplasmic part ; GO:0044444
+      %cytoplasmic chromosome ; GO:0000229
+      %cytoplasmic vesicle ; GO:0031410
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+      %cytosol ; GO:0005829
+      %endoplasmic reticulum ; GO:0005783
+      %endosome ; GO:0005768
+      %Golgi apparatus ; GO:0005794
+      %lipid particle ; GO:0005811
+      %microbody ; GO:0042579
+       %peroxisome ; GO:0005777
+      %microtubule organizing center ; GO:0005815
+      %mitochondrion ; GO:0005739
+      %plastid ; GO:0009536
+      %ribosome ; GO:0005840
+      %vacuole ; GO:0005773
+       %lytic vacuole ; GO:0000323
+        %lysosome ; GO:0005764
+     %intracellular organelle ; GO:0043229
+      %cytoplasmic vesicle ; GO:0031410
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+      %intracellular membrane-bounded organelle ; GO:0043231
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+       %endoplasmic reticulum ; GO:0005783
+       %endosome ; GO:0005768
+       %Golgi apparatus ; GO:0005794
+       %microbody ; GO:0042579
+        %peroxisome ; GO:0005777
+       %mitochondrion ; GO:0005739
+       %nucleus ; GO:0005634
+        <nuclear part ; GO:0044428
+         %nuclear chromosome ; GO:0000228
+         %nuclear envelope ; GO:0005635
+         %nuclear lumen ; GO:0031981
+          <nucleolus ; GO:0005730
+          <nucleoplasm ; GO:0005654
+         %nucleolus ; GO:0005730
+         %nucleoplasm ; GO:0005654
+       %plastid ; GO:0009536
+       %vacuole ; GO:0005773
+        %lytic vacuole ; GO:0000323
+         %lysosome ; GO:0005764
+      %intracellular non-membrane-bounded organelle ; GO:0043232
+       %chromosome ; GO:0005694
+        %cytoplasmic chromosome ; GO:0000229
+        %nuclear chromosome ; GO:0000228
+       %cytoskeleton ; GO:0005856
+        %microtubule cytoskeleton ; GO:0015630
+         <microtubule organizing center ; GO:0005815
+       %nucleolus ; GO:0005730
+       %ribosome ; GO:0005840
+      <intracellular organelle part ; GO:0044446
+       %nuclear part ; GO:0044428
+        %nuclear chromosome ; GO:0000228
+        %nuclear envelope ; GO:0005635
+        %nuclear lumen ; GO:0031981
+         <nucleolus ; GO:0005730
+         <nucleoplasm ; GO:0005654
+        %nucleolus ; GO:0005730
+        %nucleoplasm ; GO:0005654
+       %organelle envelope ; GO:0031967
+        %nuclear envelope ; GO:0005635
+     %intracellular organelle part ; GO:0044446
+      %nuclear part ; GO:0044428
+       %nuclear chromosome ; GO:0000228
+       %nuclear envelope ; GO:0005635
+       %nuclear lumen ; GO:0031981
+        <nucleolus ; GO:0005730
+        <nucleoplasm ; GO:0005654
+       %nucleolus ; GO:0005730
+       %nucleoplasm ; GO:0005654
+      %organelle envelope ; GO:0031967
+       %nuclear envelope ; GO:0005635
+     %ribonucleoprotein complex ; GO:0030529
+      %ribosome ; GO:0005840
+    %membrane ; GO:0016020
+     %endomembrane system ; GO:0012505
+      <nuclear envelope ; GO:0005635
+     %photosynthetic membrane ; GO:0034357
+      %thylakoid ; GO:0009579
+     %plasma membrane ; GO:0005886
+  %cell part ; GO:0044464
+   %cell projection ; GO:0042995
+    %cilium ; GO:0005929
+   %external encapsulating structure ; GO:0030312
+    %cell envelope ; GO:0030313
+    %cell wall ; GO:0005618
+   %intracellular ; GO:0005622
+    <intracellular part ; GO:0044424
+     %cytoplasm ; GO:0005737
+      <cytoplasmic part ; GO:0044444
+       %cytoplasmic chromosome ; GO:0000229
+       %cytoplasmic vesicle ; GO:0031410
+        %cytoplasmic membrane-bounded vesicle ; GO:0016023
+       %cytosol ; GO:0005829
+       %endoplasmic reticulum ; GO:0005783
+       %endosome ; GO:0005768
+       %Golgi apparatus ; GO:0005794
+       %lipid particle ; GO:0005811
+       %microbody ; GO:0042579
+        %peroxisome ; GO:0005777
+       %microtubule organizing center ; GO:0005815
+       %mitochondrion ; GO:0005739
+       %plastid ; GO:0009536
+       %ribosome ; GO:0005840
+       %vacuole ; GO:0005773
+        %lytic vacuole ; GO:0000323
+         %lysosome ; GO:0005764
+     %cytoplasmic part ; GO:0044444
+      %cytoplasmic chromosome ; GO:0000229
+      %cytoplasmic vesicle ; GO:0031410
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+      %cytosol ; GO:0005829
+      %endoplasmic reticulum ; GO:0005783
+      %endosome ; GO:0005768
+      %Golgi apparatus ; GO:0005794
+      %lipid particle ; GO:0005811
+      %microbody ; GO:0042579
+       %peroxisome ; GO:0005777
+      %microtubule organizing center ; GO:0005815
+      %mitochondrion ; GO:0005739
+      %plastid ; GO:0009536
+      %ribosome ; GO:0005840
+      %vacuole ; GO:0005773
+       %lytic vacuole ; GO:0000323
+        %lysosome ; GO:0005764
+     %intracellular organelle ; GO:0043229
+      %cytoplasmic vesicle ; GO:0031410
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+      %intracellular membrane-bounded organelle ; GO:0043231
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+       %endoplasmic reticulum ; GO:0005783
+       %endosome ; GO:0005768
+       %Golgi apparatus ; GO:0005794
+       %microbody ; GO:0042579
+        %peroxisome ; GO:0005777
+       %mitochondrion ; GO:0005739
+       %nucleus ; GO:0005634
+        <nuclear part ; GO:0044428
+         %nuclear chromosome ; GO:0000228
+         %nuclear envelope ; GO:0005635
+         %nuclear lumen ; GO:0031981
+          <nucleolus ; GO:0005730
+          <nucleoplasm ; GO:0005654
+         %nucleolus ; GO:0005730
+         %nucleoplasm ; GO:0005654
+       %plastid ; GO:0009536
+       %vacuole ; GO:0005773
+        %lytic vacuole ; GO:0000323
+         %lysosome ; GO:0005764
+      %intracellular non-membrane-bounded organelle ; GO:0043232
+       %chromosome ; GO:0005694
+        %cytoplasmic chromosome ; GO:0000229
+        %nuclear chromosome ; GO:0000228
+       %cytoskeleton ; GO:0005856
+        %microtubule cytoskeleton ; GO:0015630
+         <microtubule organizing center ; GO:0005815
+       %nucleolus ; GO:0005730
+       %ribosome ; GO:0005840
+      <intracellular organelle part ; GO:0044446
+       %nuclear part ; GO:0044428
+        %nuclear chromosome ; GO:0000228
+        %nuclear envelope ; GO:0005635
+        %nuclear lumen ; GO:0031981
+         <nucleolus ; GO:0005730
+         <nucleoplasm ; GO:0005654
+        %nucleolus ; GO:0005730
+        %nucleoplasm ; GO:0005654
+       %organelle envelope ; GO:0031967
+        %nuclear envelope ; GO:0005635
+     %intracellular organelle part ; GO:0044446
+      %nuclear part ; GO:0044428
+       %nuclear chromosome ; GO:0000228
+       %nuclear envelope ; GO:0005635
+       %nuclear lumen ; GO:0031981
+        <nucleolus ; GO:0005730
+        <nucleoplasm ; GO:0005654
+       %nucleolus ; GO:0005730
+       %nucleoplasm ; GO:0005654
+      %organelle envelope ; GO:0031967
+       %nuclear envelope ; GO:0005635
+     %ribonucleoprotein complex ; GO:0030529
+      %ribosome ; GO:0005840
+   %intracellular part ; GO:0044424
+    %cytoplasm ; GO:0005737
+     <cytoplasmic part ; GO:0044444
+      %cytoplasmic chromosome ; GO:0000229
+      %cytoplasmic vesicle ; GO:0031410
+       %cytoplasmic membrane-bounded vesicle ; GO:0016023
+      %cytosol ; GO:0005829
+      %endoplasmic reticulum ; GO:0005783
+      %endosome ; GO:0005768
+      %Golgi apparatus ; GO:0005794
+      %lipid particle ; GO:0005811
+      %microbody ; GO:0042579
+       %peroxisome ; GO:0005777
+      %microtubule organizing center ; GO:0005815
+      %mitochondrion ; GO:0005739
+      %plastid ; GO:0009536
+      %ribosome ; GO:0005840
+      %vacuole ; GO:0005773
+       %lytic vacuole ; GO:0000323
+        %lysosome ; GO:0005764
+    %cytoplasmic part ; GO:0044444
+     %cytoplasmic chromosome ; GO:0000229
+     %cytoplasmic vesicle ; GO:0031410
+      %cytoplasmic membrane-bounded vesicle ; GO:0016023
+     %cytosol ; GO:0005829
+     %endoplasmic reticulum ; GO:0005783
+     %endosome ; GO:0005768
+     %Golgi apparatus ; GO:0005794
+     %lipid particle ; GO:0005811
+     %microbody ; GO:0042579
+      %peroxisome ; GO:0005777
+     %microtubule organizing center ; GO:0005815
+     %mitochondrion ; GO:0005739
+     %plastid ; GO:0009536
+     %ribosome ; GO:0005840
+     %vacuole ; GO:0005773
+      %lytic vacuole ; GO:0000323
+       %lysosome ; GO:0005764
+    %intracellular organelle ; GO:0043229
+     %cytoplasmic vesicle ; GO:0031410
+      %cytoplasmic membrane-bounded vesicle ; GO:0016023
+     %intracellular membrane-bounded organelle ; GO:0043231
+      %cytoplasmic membrane-bounded vesicle ; GO:0016023
+      %endoplasmic reticulum ; GO:0005783
+      %endosome ; GO:0005768
+      %Golgi apparatus ; GO:0005794
+      %microbody ; GO:0042579
+       %peroxisome ; GO:0005777
+      %mitochondrion ; GO:0005739
+      %nucleus ; GO:0005634
+       <nuclear part ; GO:0044428
+        %nuclear chromosome ; GO:0000228
+        %nuclear envelope ; GO:0005635
+        %nuclear lumen ; GO:0031981
+         <nucleolus ; GO:0005730
+         <nucleoplasm ; GO:0005654
+        %nucleolus ; GO:0005730
+        %nucleoplasm ; GO:0005654
+      %plastid ; GO:0009536
+      %vacuole ; GO:0005773
+       %lytic vacuole ; GO:0000323
+        %lysosome ; GO:0005764
+     %intracellular non-membrane-bounded organelle ; GO:0043232
+      %chromosome ; GO:0005694
+       %cytoplasmic chromosome ; GO:0000229
+       %nuclear chromosome ; GO:0000228
+      %cytoskeleton ; GO:0005856
+       %microtubule cytoskeleton ; GO:0015630
+        <microtubule organizing center ; GO:0005815
+      %nucleolus ; GO:0005730
+      %ribosome ; GO:0005840
+     <intracellular organelle part ; GO:0044446
+      %nuclear part ; GO:0044428
+       %nuclear chromosome ; GO:0000228
+       %nuclear envelope ; GO:0005635
+       %nuclear lumen ; GO:0031981
+        <nucleolus ; GO:0005730
+        <nucleoplasm ; GO:0005654
+       %nucleolus ; GO:0005730
+       %nucleoplasm ; GO:0005654
+      %organelle envelope ; GO:0031967
+       %nuclear envelope ; GO:0005635
+    %intracellular organelle part ; GO:0044446
+     %nuclear part ; GO:0044428
+      %nuclear chromosome ; GO:0000228
+      %nuclear envelope ; GO:0005635
+      %nuclear lumen ; GO:0031981
+       <nucleolus ; GO:0005730
+       <nucleoplasm ; GO:0005654
+      %nucleolus ; GO:0005730
+      %nucleoplasm ; GO:0005654
+     %organelle envelope ; GO:0031967
+      %nuclear envelope ; GO:0005635
+    %ribonucleoprotein complex ; GO:0030529
+     %ribosome ; GO:0005840
+   %membrane ; GO:0016020
+    %endomembrane system ; GO:0012505
+     <nuclear envelope ; GO:0005635
+    %photosynthetic membrane ; GO:0034357
+     %thylakoid ; GO:0009579
+    %plasma membrane ; GO:0005886
+  %envelope ; GO:0031975
+   %cell envelope ; GO:0030313
+   %organelle envelope ; GO:0031967
+    %nuclear envelope ; GO:0005635
+  %extracellular matrix ; GO:0031012
+   %proteinaceous extracellular matrix ; GO:0005578
+  %extracellular region ; GO:0005576
+   <extracellular region part ; GO:0044421
+    %extracellular space ; GO:0005615
+    %proteinaceous extracellular matrix ; GO:0005578
+  %extracellular region part ; GO:0044421
+   %extracellular space ; GO:0005615
+   %proteinaceous extracellular matrix ; GO:0005578
+  %macromolecular complex ; GO:0032991
+   %ribonucleoprotein complex ; GO:0030529
+    %ribosome ; GO:0005840
+  %membrane-enclosed lumen ; GO:0031974
+   %organelle lumen ; GO:0043233
+    %nuclear lumen ; GO:0031981
+     <nucleolus ; GO:0005730
+     <nucleoplasm ; GO:0005654
+  %obsolete cellular component ; GO:0008370
+   %unlocalized protein complex ; GO:0005941
+  %organelle ; GO:0043226
+   %intracellular organelle ; GO:0043229
+    %cytoplasmic vesicle ; GO:0031410
+     %cytoplasmic membrane-bounded vesicle ; GO:0016023
+    %intracellular membrane-bounded organelle ; GO:0043231
+     %cytoplasmic membrane-bounded vesicle ; GO:0016023
+     %endoplasmic reticulum ; GO:0005783
+     %endosome ; GO:0005768
+     %Golgi apparatus ; GO:0005794
+     %microbody ; GO:0042579
+      %peroxisome ; GO:0005777
+     %mitochondrion ; GO:0005739
+     %nucleus ; GO:0005634
+      <nuclear part ; GO:0044428
+       %nuclear chromosome ; GO:0000228
+       %nuclear envelope ; GO:0005635
+       %nuclear lumen ; GO:0031981
+        <nucleolus ; GO:0005730
+        <nucleoplasm ; GO:0005654
+       %nucleolus ; GO:0005730
+       %nucleoplasm ; GO:0005654
+     %plastid ; GO:0009536
+     %vacuole ; GO:0005773
+      %lytic vacuole ; GO:0000323
+       %lysosome ; GO:0005764
+    %intracellular non-membrane-bounded organelle ; GO:0043232
+     %chromosome ; GO:0005694
+      %cytoplasmic chromosome ; GO:0000229
+      %nuclear chromosome ; GO:0000228
+     %cytoskeleton ; GO:0005856
+      %microtubule cytoskeleton ; GO:0015630
+       <microtubule organizing center ; GO:0005815
+     %nucleolus ; GO:0005730
+     %ribosome ; GO:0005840
+    <intracellular organelle part ; GO:0044446
+     %nuclear part ; GO:0044428
+      %nuclear chromosome ; GO:0000228
+      %nuclear envelope ; GO:0005635
+      %nuclear lumen ; GO:0031981
+       <nucleolus ; GO:0005730
+       <nucleoplasm ; GO:0005654
+      %nucleolus ; GO:0005730
+      %nucleoplasm ; GO:0005654
+     %organelle envelope ; GO:0031967
+      %nuclear envelope ; GO:0005635
+   %membrane-bounded organelle ; GO:0043227
+    %intracellular membrane-bounded organelle ; GO:0043231
+     %cytoplasmic membrane-bounded vesicle ; GO:0016023
+     %endoplasmic reticulum ; GO:0005783
+     %endosome ; GO:0005768
+     %Golgi apparatus ; GO:0005794
+     %microbody ; GO:0042579
+      %peroxisome ; GO:0005777
+     %mitochondrion ; GO:0005739
+     %nucleus ; GO:0005634
+      <nuclear part ; GO:0044428
+       %nuclear chromosome ; GO:0000228
+       %nuclear envelope ; GO:0005635
+       %nuclear lumen ; GO:0031981
+        <nucleolus ; GO:0005730
+        <nucleoplasm ; GO:0005654
+       %nucleolus ; GO:0005730
+       %nucleoplasm ; GO:0005654
+     %plastid ; GO:0009536
+     %vacuole ; GO:0005773
+      %lytic vacuole ; GO:0000323
+       %lysosome ; GO:0005764
+    <organelle envelope ; GO:0031967
+     %nuclear envelope ; GO:0005635
+   %non-membrane-bounded organelle ; GO:0043228
+    %intracellular non-membrane-bounded organelle ; GO:0043232
+     %chromosome ; GO:0005694
+      %cytoplasmic chromosome ; GO:0000229
+      %nuclear chromosome ; GO:0000228
+     %cytoskeleton ; GO:0005856
+      %microtubule cytoskeleton ; GO:0015630
+       <microtubule organizing center ; GO:0005815
+     %nucleolus ; GO:0005730
+     %ribosome ; GO:0005840
+   <organelle part ; GO:0044422
+    %intracellular organelle part ; GO:0044446
+     %nuclear part ; GO:0044428
+      %nuclear chromosome ; GO:0000228
+      %nuclear envelope ; GO:0005635
+      %nuclear lumen ; GO:0031981
+       <nucleolus ; GO:0005730
+       <nucleoplasm ; GO:0005654
+      %nucleolus ; GO:0005730
+      %nucleoplasm ; GO:0005654
+     %organelle envelope ; GO:0031967
+      %nuclear envelope ; GO:0005635
+    %organelle lumen ; GO:0043233
+     %nuclear lumen ; GO:0031981
+      <nucleolus ; GO:0005730
+      <nucleoplasm ; GO:0005654
+   %vesicle ; GO:0031982
+    %cytoplasmic vesicle ; GO:0031410
+     %cytoplasmic membrane-bounded vesicle ; GO:0016023
+    %membrane-bounded vesicle ; GO:0031988
+     %cytoplasmic membrane-bounded vesicle ; GO:0016023
+  %organelle part ; GO:0044422
+   %intracellular organelle part ; GO:0044446
+    %nuclear part ; GO:0044428
+     %nuclear chromosome ; GO:0000228
+     %nuclear envelope ; GO:0005635
+     %nuclear lumen ; GO:0031981
+      <nucleolus ; GO:0005730
+      <nucleoplasm ; GO:0005654
+     %nucleolus ; GO:0005730
+     %nucleoplasm ; GO:0005654
+    %organelle envelope ; GO:0031967
+     %nuclear envelope ; GO:0005635
+   %organelle lumen ; GO:0043233
+    %nuclear lumen ; GO:0031981
+     <nucleolus ; GO:0005730
+     <nucleoplasm ; GO:0005654
+ %molecular_function ; GO:0003674
+  %antioxidant activity ; GO:0016209
+  %binding ; GO:0005488
+   %carbohydrate binding ; GO:0030246
+   %chromatin binding ; GO:0003682
+   %ion binding ; GO:0043167
+    %cation binding ; GO:0043169
+     %calcium ion binding ; GO:0005509
+    %metal ion binding ; GO:0046872
+     %calcium ion binding ; GO:0005509
+   %lipid binding ; GO:0008289
+   %molecular adaptor activity ; GO:0060090
+    %triplet codon-amino acid adaptor activity ; GO:0030533
+   %nucleic acid binding ; GO:0003676
+    %base pairing ; GO:0000496
+     %base pairing with RNA ; GO:0000498
+      %base pairing with mRNA ; GO:0000499
+       %triplet codon-amino acid adaptor activity ; GO:0030533
+    %DNA binding ; GO:0003677
+     %transcription factor activity ; GO:0003700
+    %RNA binding ; GO:0003723
+     %base pairing with RNA ; GO:0000498
+      %base pairing with mRNA ; GO:0000499
+       %triplet codon-amino acid adaptor activity ; GO:0030533
+    %translation factor activity, nucleic acid binding ; GO:0008135
+   %nucleotide binding ; GO:0000166
+   %oxygen binding ; GO:0019825
+   %protein binding ; GO:0005515
+    %cytoskeletal protein binding ; GO:0008092
+     %actin binding ; GO:0003779
+    %receptor binding ; GO:0005102
+  %catalytic activity ; GO:0003824
+   %hydrolase activity ; GO:0016787
+    %hydrolase activity, acting on ester bonds ; GO:0016788
+     %nuclease activity ; GO:0004518
+     %phosphoric ester hydrolase activity ; GO:0042578
+      %phosphoric monoester hydrolase activity ; GO:0016791
+       %phosphoprotein phosphatase activity ; GO:0004721
+    %peptidase activity ; GO:0008233
+   %transferase activity ; GO:0016740
+    %transferase activity, transferring phosphorus-containing groups ; GO:0016772
+     %kinase activity ; GO:0016301
+      %protein kinase activity ; GO:0004672
+     %phosphotransferase activity, alcohol group as acceptor ; GO:0016773
+      %protein kinase activity ; GO:0004672
+  %chaperone regulator activity ; GO:0030188
+  %enzyme regulator activity ; GO:0030234
+  %molecular transducer activity ; GO:0060089
+   %signal transducer activity ; GO:0004871
+    %receptor activity ; GO:0004872
+  %motor activity ; GO:0003774
+  %nutrient reservoir activity ; GO:0045735
+  %obsolete molecular function ; GO:0008369
+   %electron transporter activity ; GO:0005489
+  %structural molecule activity ; GO:0005198
+  %transcription regulator activity ; GO:0030528
+   %transcription factor activity ; GO:0003700
+  %translation regulator activity ; GO:0045182
+   %translation factor activity, nucleic acid binding ; GO:0008135
+  %transporter activity ; GO:0005215
+   %neurotransmitter transporter activity ; GO:0005326
+   %substrate-specific transporter activity ; GO:0022892
+    %substrate-specific transmembrane transporter activity ; GO:0022891
+     %ion transmembrane transporter activity ; GO:0015075
+      %ion channel activity ; GO:0005216
+   %transmembrane transporter activity ; GO:0022857
+    %passive transmembrane transporter activity ; GO:0022803
+     %channel activity ; GO:0015267
+      %substrate specific channel activity ; GO:0022838
+       %ion channel activity ; GO:0005216
+    %substrate-specific transmembrane transporter activity ; GO:0022891
+     %ion transmembrane transporter activity ; GO:0015075
+      %ion channel activity ; GO:0005216
+ %biological_process ; GO:0008150
+  %biological regulation ; GO:0065007
+   %regulation of biological process ; GO:0050789
+    %regulation of cellular process ; GO:0050794
+     %regulation of gene expression ; GO:0010468
+      %regulation of gene expression, epigenetic ; GO:0040029
+   %regulation of biological quality ; GO:0065008
+    %homeostatic process ; GO:0042592
+     %cellular homeostasis ; GO:0019725
+    %regulation of cell size ; GO:0008361
+     <cell growth ; GO:0016049
+  %cellular process ; GO:0009987
+   %cell communication ; GO:0007154
+    %cell-cell signaling ; GO:0007267
+    %signal transduction ; GO:0007165
+   %cell cycle ; GO:0007049
+   %cell development ; GO:0048468
+    <cell death ; GO:0008219
+   %cell growth ; GO:0016049
+   %cell proliferation ; GO:0008283
+   %cell recognition ; GO:0008037
+   %cellular component organization and biogenesis ; GO:0016043
+    %cytoplasm organization and biogenesis ; GO:0007028
+    %organelle organization and biogenesis ; GO:0006996
+     %cytoskeleton organization and biogenesis ; GO:0007010
+     %mitochondrion organization and biogenesis ; GO:0007005
+   %cellular developmental process ; GO:0048869
+    %cell death ; GO:0008219
+    %cell differentiation ; GO:0030154
+     <cell development ; GO:0048468
+      <cell death ; GO:0008219
+   %cellular homeostasis ; GO:0019725
+   %cellular metabolic process ; GO:0044237
+    %amino acid and derivative metabolic process ; GO:0006519
+    %cellular biosynthetic process ; GO:0044249
+     %translation ; GO:0006412
+    %cellular macromolecule metabolic process ; GO:0044260
+     %cellular protein metabolic process ; GO:0044267
+      %protein modification process ; GO:0006464
+      %translation ; GO:0006412
+    %generation of precursor metabolites and energy ; GO:0006091
+    %nucleobase, nucleoside, nucleotide and nucleic acid metabolic process ; GO:0006139
+     %DNA metabolic process ; GO:0006259
+     %transcription ; GO:0006350
+   %gene expression ; GO:0010467
+    %&regulation of gene expression ; GO:0010468
+     %regulation of gene expression, epigenetic ; GO:0040029
+    <transcription ; GO:0006350
+    <translation ; GO:0006412
+   %&regulation of cellular process ; GO:0050794
+    %regulation of gene expression ; GO:0010468
+     %regulation of gene expression, epigenetic ; GO:0040029
+  %developmental process ; GO:0032502
+   %anatomical structure development ; GO:0048856
+    <anatomical structure morphogenesis ; GO:0009653
+   %anatomical structure morphogenesis ; GO:0009653
+   %cellular developmental process ; GO:0048869
+    %cell death ; GO:0008219
+    %cell differentiation ; GO:0030154
+     <cell development ; GO:0048468
+      <cell death ; GO:0008219
+   %death ; GO:0016265
+    %cell death ; GO:0008219
+   %embryonic development ; GO:0009790
+   %multicellular organismal development ; GO:0007275
+    <embryonic development ; GO:0009790
+  %establishment of localization ; GO:0051234
+   %establishment of protein localization ; GO:0045184
+    %protein transport ; GO:0015031
+   %transport ; GO:0006810
+    %ion transport ; GO:0006811
+    %protein transport ; GO:0015031
+  %growth ; GO:0040007
+   %cell growth ; GO:0016049
+  %localization ; GO:0051179
+   <establishment of localization ; GO:0051234
+    %establishment of protein localization ; GO:0045184
+     %protein transport ; GO:0015031
+    %transport ; GO:0006810
+     %ion transport ; GO:0006811
+     %protein transport ; GO:0015031
+   %macromolecule localization ; GO:0033036
+    %protein localization ; GO:0008104
+     <establishment of protein localization ; GO:0045184
+      %protein transport ; GO:0015031
+  %metabolic process ; GO:0008152
+   %biosynthetic process ; GO:0009058
+    %cellular biosynthetic process ; GO:0044249
+     %translation ; GO:0006412
+    %macromolecule biosynthetic process ; GO:0009059
+     %biopolymer biosynthetic process ; GO:0043284
+      %transcription ; GO:0006350
+     %translation ; GO:0006412
+   %catabolic process ; GO:0009056
+   %cellular metabolic process ; GO:0044237
+    %amino acid and derivative metabolic process ; GO:0006519
+    %cellular biosynthetic process ; GO:0044249
+     %translation ; GO:0006412
+    %cellular macromolecule metabolic process ; GO:0044260
+     %cellular protein metabolic process ; GO:0044267
+      %protein modification process ; GO:0006464
+      %translation ; GO:0006412
+    %generation of precursor metabolites and energy ; GO:0006091
+    %nucleobase, nucleoside, nucleotide and nucleic acid metabolic process ; GO:0006139
+     %DNA metabolic process ; GO:0006259
+     %transcription ; GO:0006350
+   %macromolecule metabolic process ; GO:0043170
+    %biopolymer metabolic process ; GO:0043283
+     %biopolymer biosynthetic process ; GO:0043284
+      %transcription ; GO:0006350
+     %biopolymer modification ; GO:0043412
+      %protein modification process ; GO:0006464
+     %DNA metabolic process ; GO:0006259
+    %cellular macromolecule metabolic process ; GO:0044260
+     %cellular protein metabolic process ; GO:0044267
+      %protein modification process ; GO:0006464
+      %translation ; GO:0006412
+    %macromolecule biosynthetic process ; GO:0009059
+     %biopolymer biosynthetic process ; GO:0043284
+      %transcription ; GO:0006350
+     %translation ; GO:0006412
+    %protein metabolic process ; GO:0019538
+     %cellular protein metabolic process ; GO:0044267
+      %protein modification process ; GO:0006464
+      %translation ; GO:0006412
+   %primary metabolic process ; GO:0044238
+    %amino acid and derivative metabolic process ; GO:0006519
+    %carbohydrate metabolic process ; GO:0005975
+    %lipid metabolic process ; GO:0006629
+    %nucleobase, nucleoside, nucleotide and nucleic acid metabolic process ; GO:0006139
+     %DNA metabolic process ; GO:0006259
+     %transcription ; GO:0006350
+    %protein metabolic process ; GO:0019538
+     %cellular protein metabolic process ; GO:0044267
+      %protein modification process ; GO:0006464
+      %translation ; GO:0006412
+   %secondary metabolic process ; GO:0019748
+  %multicellular organismal process ; GO:0032501
+   %multicellular organismal development ; GO:0007275
+    <embryonic development ; GO:0009790
+  %obsolete biological process ; GO:0008371
+   %electron transport ; GO:0006118
+  %&regulation of biological process ; GO:0050789
+   %regulation of cellular process ; GO:0050794
+    %regulation of gene expression ; GO:0010468
+     %regulation of gene expression, epigenetic ; GO:0040029
+  %reproduction ; GO:0000003
+  %response to stimulus ; GO:0050896
+   %behavior ; GO:0007610
+   %response to abiotic stimulus ; GO:0009628
+   %response to biotic stimulus ; GO:0009607
+   %response to endogenous stimulus ; GO:0009719
+   %response to external stimulus ; GO:0009605
+   %response to stress ; GO:0006950
+  %viral reproduction ; GO:0016032

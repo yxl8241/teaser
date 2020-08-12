@@ -1,0 +1,117 @@
+<html>
+	<head><title>GOBU - Plugin - ExpressionView Plugin</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">ExpressionView</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+			<ol type=a>
+			<li><a href="#descNote">Special notes</a>
+			</ol>
+		<li><a href="#usage">Usage</a>
+			<ol type=a>
+			<li><a href="#useNote">Special notes</a>
+			</ol>
+		<li><a href="#userdata">User data preparation</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+		This plugin draws expression levels of given <a href="../../operational/index.html#userNode">property nodes</a> of type &quot;exp&quot; of selected <a href="../../operational/index.html#userNode">representative nodes</a> in the user tree. That is, you would see changes of expression levels of samples (Fig. 1) of a specific GO category if you set the <a href="../../operational/index.html#userTreeP2">appearance level</a> to &quot;Representative&quot; (Fig. 2, the red rectangle).
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl009001.png.html" target=_blank>
+				<image src="pl009001t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl009002.png.html" target=_blank>
+				<image src="pl009002t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 1</b></td>
+				<td><b>Fig. 2</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+
+		<h5><a name="descNote">Special notes</a></h5>
+		<ol>
+		<li>This plugin incorperates <a href="http://www.jfree.org/jfreechart/index.php"> JFreeChart </a> (1.0.0-pre2) for making charts.
+		</ol>
+
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="usage">Usage</a></h3>
+		<ol>
+		
+		<li>Plugins -&gt; ExpressionView plugin, for invoking the plugin window.
+		<br clear=all>
+		
+		<li>This plugin draws all &quot;selected&quot; <a href="../../operational/index.html#userNode">representative nodes</a>, i.e., a representative node you click or representative nodes under the node you click. So it is suggested to set the <a href="../../operational/index.html#userTreeP2">appearance level</a> to &quot;Representative&quot; (Fig. 2, the red rectangle).
+		<br clear=all>
+		
+		<table border=0 align=center>
+			<tr>
+				<td>
+				<image src="pl009003.png">
+				</td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<li>For the help window.
+		<br clear=all>
+		
+		<li>For saving the expression plot.
+		<br clear=all>
+
+		<li>After every selection, this field shows an accession if only one representative is selected; otherwise, &quot;Multiple selection&quot;.
+		<br clear=all>
+
+		<li>The plot will automatically adjust the range if &quot;Auto&quot; is selected; otherwise, you should input Y-Min and Y-Max by yourself.
+		<br clear=all>
+
+		<li>The plot will be in log-scale if &quot;logY&quot; is selected.
+		<br clear=all>
+
+		<li>Click &quot;Memorize plot&quot; for fixing current plot so that newer selections will be drawn in a different color and memorized plot will be shown at the same time.
+		<br clear=all>
+
+		<li>Click &quot;Clear memory&quot; for releasing the memorized plot.
+		<br clear=all>
+
+		</ol>
+
+		<h5><a name="useNote">Special notes</a></h5>
+		<ol>
+		<li>Missing values of Representative nodes will be reported as 0.
+		<li>log-values of values less than or equal to 0 will be transferred as <i>floor(log10(the minimum value greater than 0))-1</i>.
+		<li>For a multiple selection, a thick line will be appended for representing the average.
+		</ol>
+
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="userdata">User data preparation</a></h3>
+		This section is for preparing the user data for visualization of this plugin. We strongly recommand you to read <a href="../../technical/index.html#formats">the file formats</a>.</p>
+		
+		This plugin looks for property nodes of type &quot;exp&quot;, where the content fields should be separated into two fields as &quot;tags&quot; and &quot;expression valuess&quot;. All you need to do is to prepare node strings like &quot;PR:exp:pphy2:0.09&quot; for property nodes, and to <a href="../../technical/index.html#aaUtil">add them</a> to some tree.</p>
+
+
+	</body>
+</html>

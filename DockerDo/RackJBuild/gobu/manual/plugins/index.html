@@ -1,0 +1,159 @@
+<html>
+	<head><title>GOBU - Plugin Page</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">home</a></td></tr></table>
+	<body>
+		<h1><a name="top">Plugin Page</a></h1>
+		A list of current GOBU plugins (extension software) is given in this page. Plugin related programming topics will be provided in this page.
+		
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#preface">Preface</a>
+		<li><a href="#list">Plugin List</a>
+			<ol type=a>
+			<li><a href="#customized">Customized Plugins</a>
+			</ol>
+		<li><a href="#programming">Plugin Programming</a>
+			<ol type=a>
+			<li><a href="#menuSelection">Plugins Activated by Menu Selection</a>
+			<li><a href="#nodeSelection">Plugins Activated by Tree Node Selection</a>
+			<li><a href="#configTree">Config Tree</a>
+			<li><a href="#treeUtil">GOBU Tree API</a>
+			</ol>
+		<li><a href="#propertyString">Property String Handlers</a>
+			<ol type=a>
+			<li><a href="#propertyHandlers">Existing Property String Handlers</a>
+			</ol>
+		<li><a href="#powerpoint">PowerPoint Files</a>
+		</ol>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="preface">Preface</a></h3>
+		The section <a href="#list">Plugin List</a> gives an entry point of plugin information. Sections <a href="#programming">Plugin Programming</a> and <a href="#propertyString">Property String Handlers</a> are of programming related topics, and we don't suggest your reading if you are not interested in programming stuff.<p>
+		To programmers: We suppose you had read <a href="../technical/index.html">Technical Section</a>.
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="list">Plugin List</a></h3>
+		Here we list available plugins of GOBU. General purpose plugins are listed in <a href="../operational/index.html#plugins">Operation Manual</a>.
+		<ol>
+		<li><a href="pl001/index.html">Genome View Plugin</a>
+		<li><a href="pl002/index.html">Conserved Segment View Plugin</a>
+		<li><a href="pl003/index.html">Listing</a>
+		<li><a href="pl004/index.html">Draw Focus Tree Plugin</a>
+		<li><a href="pl005/index.html">Data Distribution Chart</a>
+		<li><a href="pl006/index.html">GO Distribution Chart</a>
+		<li><a href="pl007/index.html">MultiView Plugin</a>
+		<li><a href="pl008/index.html">FastInput Plugin</a>
+		<li><a href="pl009/index.html">ExpressionView Plugin</a>
+		</ol>
+		
+		<h5><a name="customized">Customized Plugins</a></h5>
+		Plugins customized for individual pipelines are listed here:
+		<ol>		
+		<li><a href="plc001/index.html">Ferret Plugin</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="programming">Plugin Programming</a></h3>
+		Plugin-writing related classes are collected in <i>bio301.goutil.gobu.plugin</i> package. Existing plugin classes are collected in <i>bio301.goutil.gobu.plugins</i> package. To write your own plugin, you need to implement a GOBU interface, <i>GobuPlugin01</i>. After compiling your plugin class and put it into a .jar file, you just need to put the .jar file into the <i>plugins</i> sub-folder of your GOBU folder for enabling your plugin. Enabled plugins will be listed in the <i><a href="../operational/index.html#plugins">Configuration Plugin</a></i>. There are two ways to launch a plugin: <i>by (popup) menu selection</i>, or <i>by tree node selection</i>. Related concepts are described in the following two sub-sections.<p>
+		Every <i>GobuPlugin01</i> instance has a field named <i>gobuFrame</i>. <i>gobuFrame</i> holds the reference to the GOBU main window object (of class <i>bio301.goutil.gobu.GobuFrame</i>). By accessing <i>gobuFrame</i>, we are able to access GO tree, user tree and focused GO tree, where they are respectively named by <i>jTreeLeft</i>, <i>jTreeMid</i> and <i>jTreeRight</i>.<p>
+		NOTE: We strongly recommend programmers to read at least Java Documents of <i>GobuPlugin01</i>. We also recommend programmers to trace the source code of <i>bio301.goutil.gobu.plugins.testplugin.TestPlugin</i>.
+
+		<h5><a name="menuSelection">Plugins Activated by Menu Selection</a></h5>
+		A plugin can be listed and selected by four menus:
+		<ol>
+		<li>GOBU menu bar: by selecting <i>Plugins</i> menu
+		<li>GO tree popup menu: by clicking a GO node and mouse-right-click
+		<li>User tree popup menu: by clicking a user node and mouse-right-click
+		<li>Focused GO tree popup menu: by clicking a node and mouse-right-click
+		</ol>
+		If you want your plugin to be launchable by a menu selection, you have to assign a String value to <i>XxxName</i> and extend corresponding <i>XxxLaunch()</i> function. For example, in <i>bio301.goutil.gobu.plugins.testplugin.TestPlugin</i>, the field <i>menuName</i> is assigned by "test plugin menu" and corresponding <i>menuLaunch()</i> is implemented so that the String "launched by menu" will append to the plugin window.
+		<table border=0 align=center>
+			<tr><td><a href="pl001.png.html" target=_blank>
+				<image src="pl001t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 1</b></td></tr>
+		</table>
+
+		<h5><a name="nodeSelection">Plugins Activated by Tree Node Selection</a></h5>
+		The mechanism of activating plugins by tree node selection is to let plugins immediately response user selection on a tree node. The general concepts are:
+		<ol>
+		<li>A <i>GobuPlugin01</i> instance should register its <i>PropertyListener</i>s to the <i>PropertyListenerManager</i> object held by GOBU main window. Every registered <i>PropertyListener</i> will take care only for programmer-designated selections.
+		<li>User may click on some tree nodes.
+		<li>Corresponding <i>PropertyEvent</i>s will be generated by GOBU.
+		<li>GOBU will dispatch these <i>PropertyEvent</i>s to registered <i>PropertyListener</i>s.
+		</ol>
+		The interface <i>PropertyListener</i> assigns only one method named <i>propertyChanged</i>. This method has exactly one parameter -- a <i>PropertyEvent</i> instance. By accessing this instance, we are able to know the meaning of the selection (methods <i>getNode</i> and <i>getSelectionLevel</i>). We strongly recommend programmers to trace <i>bio301.goutil.gobu.plugins.testplugin.TestPlugin</i> for better understanding.
+		<table border=0 align=center>
+			<tr><td><a href="pl002.png.html" target=_blank>
+				<image src="pl002t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 2</b></td></tr>
+		</table>
+		
+		<h5><a name="configTree">Config Tree</a></h5>
+		<i>Config tree</i> is a simple tree-structure information repository of GOBU. <a href="../technical/index.html#treeFormat">Tree format</a> files in <i>config</i> sub-folder (of GOBU folder) will be loaded at start-up, then plugins can access config tree by accessing <i>gobuFrame.configTree</i>.<p>
+		In config tree, loaded plugin classes are listed in the sub-tree rooted at "Configuration<font color=red>\t</font>System Information<font color=red>\t</font>Plugins".
+
+		<h5><a name="treeUtil">GOBU Tree API</a></h5>
+		In <i>bio301.goutil.gobu.GobuTreeUtility</i>, several useful tree functions are provided. For detailed usage, please refer corresponding Java Documents.
+		<ul>
+		<li><i>getPathString</i>: Given a tree node, return its corresponding path string (starting from tree root).
+		<li><i>getNodeFromPathString</i>: Given a path string, return a tree node assigned by this path string.
+		<li><i>searchAncestorForSameType</i>: Given an tree node, return the nearest ancestor of the specified type.
+		<li><i>searchSubUserTreeForSameType</i>: Given a tree node, search the corresponding sub-tree and return a <i>Set</i> of tree nodes of specified type.
+		<li><i>searchSubUserTreeForSameTypeWithType</i>: Given a tree node and two types, search the corresponding sub-tree and return a <i>Map</i>. This <i>Map</i> will contain first type tree nodes as keys and <i>Set</i>s of second type tree nodes as values.
+		</ul>
+		Examples:
+		<ul>
+		<li>In <i><a href="../operational/index.html#plugins">Quick Jump Plugin</a></i>, we use <i>getPathString</i> to get the selected path string of focused GO tree, then use <i>getNodeFromPathString</i> to obtain the corresponding tree node object in GO tree. Finally, we use some Java API to make the desired node in GO tree be selected and visible.
+		<li>In <i><a href="pl001/index.html">Genome View Plugin</a></i>, we use <i>searchSubUserTreeForSameTypeWithType</i> to obtain the R-Node_to_Loc-Properties relationships. Besides drawing these locations on chromosomes, we also attach corresponding R-nodes to these locations -- this is why we are able to label these locations with their names.
+		<li>In <i><a href="pl002/index.html">Conserved Segment View Plugin</a></i>, we use <i>searchAncestorForSameType</i> to search a unit node, then use <i>searchSubUserTreeForSameType</i> to search corresponding R-nodes of the same group -- this is why we are able to draw orthologous relationships as links.
+		</ul>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="propertyString">Property String Handler</a></h3>
+		Property String Handler mechanism is designed for memory saving. For example, node names of LOC P-nodes (P-nodes representing user-defined LOC data type) are stored as <i>String</i>s in memory. Observe that these node names are strings like "LOC:(11562763,12119228)@chr13@Mouse", we found that the starting point number and the ending point number can be saved as two <i>int</i>. We also noticed that sub-strings like "chr13" and "Mouse" are highly repetitive in all these node names, and we can just replace them by some <i>Object</i> references. By so doing, some memories are saved from recording P-node names.<p>
+		Property String Handler related classes are collected in <i>bio301.goutil.gobu.property</i> package. Existing handler classes are collected in <i>bio301.goutil.gobu.properties</i> package. To write your own property string handler, you need to implement interface <i>PropertyStringHandler</i>. After compiling your handler class and put it into a .jar file, you just need to put the .jar file into the <i>properties</i> sub-folder of your GOBU folder for enabling your handler. Enabled handlers will be listed in the sub-tree rooted at "Configuration<font color=red>\t</font>System Information<font color=red>\t</font>Property String Handlers" in <i><a href="../operational/index.html#plugins">Configuration Plugin</a></i>.<p>
+
+		<h5><a name="propertyHandlers">Existing Property String Handlers</a></h5>
+		<i>&lt;ItalicString&gt;</i> means a variable.
+		<ol>
+		<li><i>LocProperty</i>
+			<ul>
+			<li><i>Handled type</i>: LOC
+			<li><i>Description</i>: <i>LOC</i> data type describes genomic locations (ranges) on a chromosome of a genome.
+			<li><i>Type content</i>: (<i>&lt;starting poing&gt;</i>,<i>&lt;ending point&gt;</i>)@<i>&lt;chromosome name&gt;</i>@<i>&lt;genome name&gt;</i>
+			</ul>
+		<li><i>ConfidenceProperty</i>
+			<ul>
+			<li><i>Handled type</i>: confidence
+			<li><i>Description</i>: <i>confidence</i> data type describes confidence levels.
+			<li><i>Type content</i>: <i>&lt;confidence value (floating point number)&gt;</i>
+			</ul>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="powerpoint">PowerPoint Files</a></h3>
+		Here are some PowerPoint files for GOBU plugin programming, check out them if you are interested:
+		<ol>
+			<li><a href="http://gobu.iis.sinica.edu.tw/gobu/manual/plugins/20060103_pluginDesign_1.ppt">GO Browsing UtilityPlugin design - part 1</a>
+			<li><a href="http://gobu.iis.sinica.edu.tw/gobu/manual/plugins/20060103_pluginDesign_2.ppt">GO Browsing UtilityPlugin design - part 2</a>
+			<li><a href="http://gobu.iis.sinica.edu.tw/gobu/manual/plugins/20060214_pluginDesign_3.ppt">GO Browsing UtilityPlugin design - part 3</a>
+		</ol>
+
+	</body>
+</html>

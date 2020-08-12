@@ -1,0 +1,101 @@
+<html>
+	<head><title>GOBU - GOBU Applet Section</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">home</a></td></tr></table>
+	<body>
+		<h1><a name="top">GOBUApplet</a></h1>
+		<p>In this section, we describe some general information about GOBUApplet and give some technical guides for using GOBUApplet to browse your own data.</p>
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#Overview">Overview</a></li>
+		<li><a href="#GOSlimMapper">GOSlimMapper</a></li>
+		<li><a href="#UsingGOBUApplet">Using GOBUApplet</a></li>
+		<li><a href="#GOBUAppletPluginConfiguration">Modifying GOBUApplet Plugins</a></li>
+		</ol>			
+
+		<h3><a name="Overview">Overview</a></h3>
+		GOBUApplet is a light-weight version of GOBU. A Java applet is a special kind of program which can be included in an HTML page and be executed via the user's web browser. With GOBUApplet, biologists can browse the target data simply by clicking a web link which invokes the corresponding GOBUApplet.	However, an applet has some security restrictions. Here we list some major restrictions which affect the implementation of GOBUApplet in the following:<p>
+		<ul>
+		<li>Memory usage: unlike GOBU, which is able to specify maximum memory usage, the memory usage of an applet cannot be specified since it is executed via web browsers.</li>
+		<li>An applet cannot open network connections to other Internet computers except the one at which the applet is located.</li>
+		<li>An applet cannot read/write files on the client's computer. Therefore, some functions in GOBU which will read or write files on client's computer should be removed.</li>
+		</ul>
+		
+		Due to applet's memory restriction, we don't not use whole GO to browse data since it requires huge memory space. Instead, we use GO slims to browse data. A GO slim is&nbsp; a cut-down version of GO, giving you a broad overview of your data using only a set of general (i.e., lower-depth GO nodes in whole GO tree) GO terms. Therefore, the original GOBU format data (.tree format) needs to be transformed to a slimed version corresponding to the GO slim used. The <a href="#GOSlimMapper"> GOSlimMapper</a> allows you to generate slimed data corresponding to a specific GO slim. If you have any problem of generating GOBU tree format data, please refer to the <a href=../technical/index.html>Technical Section</a> of GOBU.<p>
+		Also, an applet is not allowed to open network connections to other Internet computers except the one at which the applet is located.</li> So, to browse your own data by GOBUApplet, you need to put both the GOBUApplet and the data on a same web server.<p>
+
+		<h3><a name="GOSlimMapper">GOSlimMapper</a></h3>
+		<ul>
+		<li><i>Purpose</i>: Given a user data annotated using whole GO, produce a slimed user data using the specified GO slim file.
+		<li><i>Options</i>:
+			<ol>
+			<li>-I: Specify the input file (tree format)
+			<li>-O: Specify the output file (tree format)
+			<li>-G: Specify GO data files, we advise you to use this option three times for loading component, function and process GO data.
+			<li>-S: Specify GO slim data files.
+			</ol>
+		<li><i>Description</i>: This program helps you to transform your data annotated with whole GO to a slimed version using a slimed GO (i.e., GO slim). At present, there are four GO slims which are in the GOSlim folder under GOSlimMapper folder.
+		<li><i>Example command</i> (Windows command line window, in GOBU folder):<br>
+		java -Xmx400M -classpath gobu.jar bio301.goutil.gobu.data.GOSlimMapper -G data\component.ontology.txt -G data\function.ontology.txt -G data\process.ontology.txt -I user\humanGene.tree -S GOSlim\goslim_yeast.go.txt -O slimedHumanGene.tree<br>
+		Note: In above example, all the specified file paths are relative to gobu.jar; if you need to process your files which are located at others folder, you may either modify the relative paths, or specify a complete path like this: (on Windows file system):<br>
+		java -Xmx400M -classpath gobu.jar bio301.goutil.gobu.data.GOSlimMapper -I D:\userData\eFerret.tree -O D:\slimUserData\slimedFile.tree -G data\component.ontology.txt -G data\function.ontology.txt -G data\process.ontology.txt -S GOSlim\goslim_yeast.go.txt<br>
+		</ul>
+		<br clear=all>
+		
+		<h3><a name="UsingGOBUApplet">Using GOBUApplet</a></h3>
+		To browse your data using GOBU applet, follow the steps listed below:
+		<ol>
+		<li><b>Install JRE (java run-time environment)</b>: the JRE is required to run an applet program. Version 1.4.2_10 or higher is recommended. You can download JRE from: http://java.sun.com/
+		<li><b>Uploading the main program</b>: upload the gobuapplet.jar file to a web server (To run our demo sample, we advise you to upload the show.html file and the eFerret.tree.jar to the web server together with the gobuapplet.jar file). <font color="#FF0000">Note that the jar file encapsulating the GOBUApplet program and the HTML page used to invoke the corresponding GOBUApplet should be put in a same directory</font>. Assume all the sample files are put at http://mysite.com/GOBUApplet, you can then invoke the demo GOBUApplet via URL: http://mysite.com/GOBUApplet/show.html.
+		<li><b>Loading your data into GOBUApplet:</b> the content of our sample html file to invoke the applet looks like:
+		<table border=2 align=center>
+			<tr><td>
+<pre>&lt;html&gt;
+&lt;APPLET code =&quot;bio301.goutil.gobuapplet.GobuFrame.class&quot; archive=&quot;gobuapplet.jar&quot; height=&quot;768&quot; width=&quot;1024&quot;&gt;
+&lt;param name = &quot;gobuAppletJarName&quot; VALUE = &quot;gobuapplet.jar&quot;&gt;
+&lt;param name = &quot;userdata&quot; VALUE = &quot;eFerret.tree.jar&quot;&gt;
+&lt;param name = &quot;goslim&quot; VALUE = &quot;goslim_yeast.go.txt&quot;&gt;
+&lt;/APPLET&gt;
+&lt;/html&gt;</pre>
+			</td></tr>
+		</table><p>
+		</ol>
+		
+		The &quot;gobuAppletJarName&quot; attribute specifies the jar file name encapsulating the GOBUApplet program, <font color="#FF0000">and its VALUE should be same as the &quot;archive&quot; attribute within &quot;APPLET code&quot; tag </font>(in this case, both of their names are &quot;gobuapplet.jar&quot;). For example, if you set the value of &quot;archive&quot; attribute to be &quot;gobuapplet2.jar&quot;, the value of attribute &quot;gobuAppletJarName&quot; should also be&quot;gobuapplet2.jar&quot;. Such an attribute is necessary when there are several versions of GOBUApplets which are encapsulated by jar files with different names (e.g., GOBUApplets with different plugins).<p>
+		
+		The &quot;userdata&quot; attribute specifies the file to be browsed. To reduce network transfer effort, the file is compressed and encapsulated in a jar file. <font color="#FF0000">Note that the name of the jar file must be same as the file encapsulated in jar</font>. For example, the jar file encapsulating &quot;eFerret.tree&quot; must be named &quot;eFerret.tree.jar&quot;.<p>
+
+		The &quot;goslim&quot; attribute specifies the GO slim files. At present, there are four GO slim files you can specify, namely, &quot;goslim_yeast.go.txt&quot;, &quot;goslim_plant.go.txt&quot;, &quot;goslim_generic.go.txt&quot; and &quot;goslim_GOA.go.txt&quot; (Note that before browsing your data using a specific GO slim, you must apply GOSlimMapper to generate a slimed data corresponding to that GO slim).<p>
+		
+		To load your own data, what you have to do is to generate a html file by replacing the VALUE in the &quot;param&quot; attribute. For example, to load your data &quot;myData1.tree.jar&quot; in folder &quot;data&quot; with GO slim file &quot;goslim_GOA.go.txt&quot;, 	you can generate a html like this (<font color="#FF0000">Note: the</font> <font color="#FF0000">jar file encapsulating your data should be located at the same or sub directories of the folder where the html file is</font>):
+		<table border=2 align=center>
+			<tr><td>
+<pre>&lt;html&gt;
+&lt;APPLET code =&quot;bio301.goutil.gobuapplet.GobuFrame.class&quot; archive=&quot;gobuapplet.jar&quot; height=&quot;768&quot; width=&quot;1024&quot;&gt;
+&lt;param name = &quot;gobuAppletJarName&quot; VALUE = &quot;gobuapplet.jar&quot;&gt;
+&lt;param name = &quot;userdata&quot; VALUE=&quot;data/myData1.tree.jar&quot;&gt;
+&lt;param name = &quot;goslim&quot; VALUE=&quot;goslim_GOA.go.txt&quot;&gt;
+&lt;/APPLET&gt;
+&lt;/html&gt;</pre>
+			</td></tr>
+		</table><p>
+
+		<h3><a name="GOBUAppletPluginConfiguration">Modifying GOBUApplet Plugins</h3>
+		By default, all available plugins will be shown in the plugin menu of GOBUApplet program. If you have implemented your own plugins which are acceptable by GOBU, you can also use these plugins in GOBUApplet as well. Note that you should move the plugin classes (source codes) to package bio301.goutil.gobuapplet.plugins and <a href="../compile.html">recompile</a> GOBUApplet. Plugin classes compiled with GOBU cannot be directly reused by GOBUApplet. By compling GOBUApplet using Ant, the resulting JAR file will be placed in "applet" sub-folder and named by "gobuapplet.jar". If you don't want to show all plugins in the GOBUApplet plugin menu, just uncompress the GOBUApplet JAR file, remove plugin classes under bio301.goutil.gobuapplet.plugins folder, and compress the remaining files into JAR again.
+
+
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+	<head><title>GOBU - Compile</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="index.html">home</a></td></tr></table>
+	<body>
+		<h1><a name="top">Compile</h1></h1>
+		In this page we give instruction on how to build GOBU programs from source codes.
+		
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#steps">Steps</a>
+		<li><a href="#targets">Building GOBU Applet</a>
+		</ol>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="steps">Steps</a></h3>
+		Skip steps that you had done it.
+		<ol>
+		<li>Install Java Developer's Kit (JDK), you can download JDK from <a href="http://java.sun.com/">java.sun.com</a>. In order to build GOBU successfully, JDK of version 1.4.2 (or higher) is recommended.
+		<li>Install Apache Ant, you can download Ant from <a href="http://ant.apache.org/index.html">Apache Ant</a> website.
+		<li>Decide one place as your <i><b>GOBU folder</b></i>.
+		<li><a href="index.html#download">Download</a> the complete or src package of GOBU and uncompress it to the folder containing your GOBU folder, remember to check the option "uncompress with pathname" or something like that.
+		<li>In GOBU folder, there is a "build.xml" file for building GOBU by Ant. There are two ways to build GOBU by Ant:
+			<ul>
+			<li>Modify the "build.xml" file, find the string "yourJdkHomeDir" and replace it with the path of your JDK directory. Then you can build GOBU by inputting Ant command (be sure you know the place of the Ant program) in the GOBU directory.
+			<li>Input Ant command directly in the GOBU directory with the Ant option "-D" to define property "jdk.home". For example, input command "ant -Djdk.home=c:\jdk1.5.0_01" if you had installed JDK in directory "c:\jdk1.5.0_01".
+			</ul>
+		</ol>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="applet">Building GOBU Applet</a></h3>
+		If you just follow above steps, Ant will build the GOBU standalone version. In order to build GOBU applet, just assign Ant target "appletBuild". For example, command "ant -Djdk.home=c:\jdk1.5.0_01 appletBuild" will build the applet JAR file and place it in the "applet" sub-folder in the GOBU folder.
+
+	</body>
+</html>

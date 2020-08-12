@@ -1,0 +1,134 @@
+<html>
+	<head><title>GOBU - Case Studies - EST Annotation Pipeline</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+	<h1>Case Studies - EST Annotation Pipeline</h1>
+	
+	You may omit <i>Examples</i> for skipping operational content.
+	
+	<ul>
+		<li>
+		After an EST annotation pipeline, biologists usually have a table of ESTs with their GO annotations.<p>
+		<table border=2 align=center>
+			<tr><td><b>EST accession</b></td> <td><b>GO annotation</b></td> </tr>
+			<tr><td>EST #1</td> <td>GO annotation of EST #1</td> </tr>
+			<tr><td>EST #2</td> <td>GO annotation of EST #2</td> </tr>
+			<tr><td>...</td> <td>...</td> </tr>
+		</table>
+		</li>
+		
+		<li>
+		The hierarchical information of the GO tree is hidden from tabular listing, and it might have been hard to see GO distribution of GO nodes. By loading the annotation data into GOBU, biologists are enabled to interact with the hierarchical GO tree, and it is easy to see GO distribution of any GO node.<p>
+			<ul>
+				<li><i>Example</i>: Select File -&gt; Load, open file "eFerret.tree". This file contains EST accessions of two sources (Zebrafish gill and skin) and their GO annotations. In each GO node, if a number (in parentheses) is appended in the head of it, the number means the amount of ESTs associated with this GO annotation. You may expand or collapse GO nodes for browsing these amounts of different GO nodes.</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001001a.png.html" target=_blank>
+				<image src="cs001001at.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		Sometimes biologists are interested in ESTs of specific GO annotations, the comprehensive search ability of GOBU can help biologists to find their interested GO nodes. Then by clicking on these GO nodes, a selection effect on the user tree will color all related user nodes. By selecting proper appearance level of the user tree, all non-related user nodes are filtered out -- this is useful for a large amount of data.<p>
+			<ul>
+				<li><i>Example</i>: Set Appearance level (in middle) as Representative, click Mapped only (in left), then select Search -&gt; Search GO tree. In the popup window, input "iron ion" and select Ignore case option, then click Find button. By so doing, you are searching GO nodes with term names containing "iron" and "ion". In the middle window, there will be a tree containing only ESTs associated with searched GO annotation.</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001002a.png.html" target=_blank>
+				<image src="cs001002at.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		Under GOBU's extendable architecture, a customized extension software was built for getting EST sequence information from the external annotation server.<p>
+			<ul>
+				<li><i>Example</i>: Select Plugins -&gt; Ferret plugin, a window containing three buttons will appear in the upper-left corner of your screen, click Sequence Window button. Click on any EST accession, the popup window will show the sequence. (The Ferret plugin is not provided in newer version of GOBU, please refer our source repository if you are interested.)</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001003.png.html" target=_blank>
+				<image src="cs001003t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		
+		Sometimes, the same pipeline will be applied to different dataset; for example, different sources of ESTs. By partitioning ESTs of different sources into different sub-trees, it is also feasible to present/manipulate these data on GOBU.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001004.png.html" target=_blank>
+				<image src="cs001004t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		By some operations, biologists can use GOBU to build a table of GO distributions of user-specified GO nodes against different EST sources.<p>
+			<ul>
+				<li><i>Example</i>: Select all child GO nodes of cellular_component, then select Table -&gt; Reporting nodes -&gt; Toggle reporting, selected GO nodes will become red. Select Options -> Tracing, select Gill and Skin nodes, then select Table -&gt; Append data</li>. Select Table -&gt; Show table, the built table will appear.
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001005.png.html" target=_blank>
+				<image src="cs001005t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		In this example, the EST annotation pipeline provides genomic position annotation by <a href="http://www.sanger.ac.uk/Software/analysis/SSAHA/">SSAHA</a>. So we defined two data types for representing SSAHA results; that is, the <i>LOC property</i> and the <i>confidence property</i>. They could represent one SSAHA result (a curated genomic position) with a given confidence value.
+		<table border=0 align=center>
+			<tr>
+				<td><image src="cs001006.png" align=right></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		For the SSAHA results, we also built an extension software for visualization. This visualization software has one option control (confidence filter) of two states: to draw all SSAHA results of all ESTs, or to draw the best SSAHA result of each EST.<p>
+			<ul>
+				<li><i>Example</i>: Select Plugins -&gt; Ferret plugin. In FerretPlugin window, click Zebrafish Genome View button, a genome view window will appear. In the genome view window, click first clear and select Confidence filter option. Back to GOBU main window, click on Gill, then the best predicted location of each EST will be drawn in the genome view window. (The Ferret plugin is not provided in newer version of GOBU, please refer our source repository if you are interested.)</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001007.png.html" target=_blank>
+				<image src="cs001007t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		If these EST data are appropriately organized according to their sources, the <i>in silicon differential view</i> can be eaily obtained by this extension software.<p>
+			<ul>
+				<li><i>Example</i>: Select Additive option and select a new color in the genome view window, click on Skin in GOBU main window, then we have the in silicon differential view. (The Ferret plugin is not provided in newer version of GOBU, please refer our source repository if you are interested.)</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs001008.png.html" target=_blank>
+				<image src="cs001008t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+	</ul>	
+
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+	<head><title>GOBU - Overview</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="index.html">home</a></td></tr></table>
+	<body>
+		<h1>GOBU Overview</h1>
+		We intend to give readers a conceptual understanding on GOBU by this document. For other documents, please refer our <a href="index.html#document">document lists</a>.
+		
+		<h2>Layout</h2>
+		Every time when you execute GOBU and load a properly prepared file, the GOBU program will show the main window with three tree components, listed from left to right. For convenience, we called the left tree as the <i>"GO tree"</i>, the middle tree as the <i>"user tree"</i>, the right tree as the <i>"focus GO tree"</i>.<br>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="overview001.png.html" target=_blank>
+				<image src="overview001t.png" alt="click to enlarge"></a></td>
+			</tr>
+		</table>
+		<br>
+		
+		<h5>User Tree</h5>
+		First, a loaded file is visualized as the user tree. In the user tree, biologists assign some nodes with an "R" icon, we called them representative nodes (<i>R-nodes</i> for short). Generally speaking, biologists have to organize their data into a tree structure and assign their interested objects as R-nodes. For example, in the above figure, the user data is organized by the following procedure:
+		<ol>
+		<li>Collect all human protein-coding gene IDs from NCBI database, with their location information
+		<li>Group gene IDs into one group if they are on the same chromosome
+		<li>For each group, divide gene IDs into sub-groups according their map location
+		<li>Assign gene IDs as R-nodes
+		</ol>
+		(We provide some simple utilities for building up your own data, please see <a href="technical/index.html">Technical Section</a>.)<p>
+		Further, we also assign annotations to R-nodes (i.e. gene IDs), including GO annotations and genomic location.  By so doing, it is convenient to:
+		<ul>
+		<li>use a node of map location to represent its descendant R-nodes, i.e., gene IDs in this map location.
+		<li>use a node of chromosome to represent its decendant R-nodes, i.e., gene IDs on this chromosome.
+		<li>treat descendant nodes of an R-node as its annotations.
+		</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="overview002.png.html" target=_blank>
+				<image src="overview002t.png" alt="click to enlarge"></a></td>
+			</tr>
+		</table>
+		<br>
+		
+		<h5>GO tree</h5>
+		By appropriate assigning R-nodes and their GO annotation, biologists can observe the GO distribution on the GO tree directly; that is, if a number (in parentheses) appears in a node of GO tree, it means the total number of R-nodes annotated with this node or its descendants. Biologists can just expand or collapse GO tree for browsing.<p>
+		Another benefit is that, by clicking any node of the GO tree, it means a selection of a GO annotation, including descendants of the clicked node. Such a selection will reflect to user tree, where nodes having a "selected" descendant will be shown in color, otherwise in gray.<br>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="overview003.png.html" target=_blank>
+				<image src="overview003t.png" alt="click to enlarge"></a></td>
+			</tr>
+		</table>
+		<br>
+		
+		<h5>Focus GO Tree</h5>
+		For every click on any node of the user tree or the GO tree, a "summary" will be shown in the focus GO tree:
+		<ul>
+		<li>click on a GO node, the focus GO tree will be a partial-tree of GO tree, composed of all paths from GO Root to the clicked GO node. It should be noticed that some GO nodes have multiple appearances, and the clicked GO node will be shown "selected".
+		<li>click on a colored user node, focus GO tree will be a partial-tree of the GO tree, composed of all paths from the GO Root to colored GO descendants of the clicked user node. These GO descendants will be shown "selected".
+		</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="overview004.png.html" target=_blank>
+				<image src="overview004t.png" alt="click to enlarge" align=top></a></td>
+				<td><a href="overview005.png.html" target=_blank>
+				<image src="overview005t.png" alt="click to enlarge" align=top></a></td>
+				</a></td>
+			</tr>
+		</table>
+		<br>
+		
+		<h2>Special Functionalities</h2>
+		
+		<h5>Table Building</h5>
+		Biologists can assign any node on the GO tree as a <i>reporting</i> node, then by some operations, a table telling the GO distributions of different sub-trees of the user tree can be built. The table can be saved as an MS Excel file for further use.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="overview006.png.html" target=_blank>
+				<image src="overview006t.png" alt="click to enlarge" align=top></a></td>
+				<td><a href="overview007.png.html" target=_blank>
+				<image src="overview007t.png" alt="click to enlarge" align=top></a></td>
+				</a></td>
+			</tr>
+		</table>
+		<br>
+		
+		<h5>User-Defined Data Types and the Extendable Architecture</h5>
+		To facilitate the use of biologists, GOBU permits biologists to create their own data types and corresponding extension software. For example, we create the LOC data type for representating genomic locations. Under the extendable architecture, we provide an extension software (plugin) for drawing these genomic locations on human chromosomes.<br>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="overview008.png.html" target=_blank>
+				<image src="overview008t.png" alt="click to enlarge"></a></td>
+			</tr>
+		</table>
+		<br>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+	<head><title>GOBU - Plugin - Data Distribution Chart</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">Data Distribution Chart</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+			<ol type=a>
+			<li><a href="#note">Special notes</a>
+			</ol>
+		<li><a href="#usage">Usage by Example</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+		This plugin gives pie charts or bar charts of counts of user-specified R-nodes that having a user-specified GO annotation. For example, Fig. 1 is a pie chart for genes in each human chromosome that having GO annotation "nucleic acid binding", and Fig. 2 is the corresponding bar chart.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl005001.png.html" target=_blank>
+				<image src="pl005001t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl005002.png.html" target=_blank>
+				<image src="pl005002t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 1</b></td>
+				<td><b>Fig. 2</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+
+		<h5><a name="note">Special notes</a></h5>
+		<ol>		
+		<li>This plugin incorperates <a href="http://www.jfree.org/jfreechart/index.php"> JFreeChart </a> (1.0.0-pre2) for making charts.
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="usage">Usage by Example</a></h3>
+		<ol>
+		<li>
+		File -&gt; Load, open the file "humanGene.tree"
+		<br clear=all>
+		
+		<li>
+		Plugins -&gt; Data Distribution Chart. A window called "Data Distribution Chart" will appear.
+		<table border=0 align=center>
+			<tr><td><a href="pl005003.png.html" target=_blank>
+				<image src="pl005003t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 3</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		In this example, we are trying to observe the distribution of genes in different human chromosome given a GO annotation. To this end, we have to assign the chromosomes that we want to observe. <a href="../../operational/index.html#tips">Select</a> some chromosomes, click mouse right button, then select "Added to Data Distribution Chart". Added chromosomes will be listed in the table of Data Distribution Chart window (Fig. 4, blue rectangle). This list can be cleared by clicking the "Clear list" button (Fig. 4, green cycle), and a column can be deleted by selecting a cell and clicking the "Delete column" button (Fig. 4, red cycle).
+		<table border=0 align=center>
+			<tr><td><a href="pl005004.png.html" target=_blank>
+				<image src="pl005004t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 4</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Click on any GO node in the GO tree. The main function of this plugin is to make charts according to the <a href="../../operational/index.html#userTree">the number of selected descandent R-nodes</a> (in this case, genes) of each node listed in the table. For example, the numbers of selected descandent R-nodes are the numbers marked by the green color in Fig. 5, and these numbers are used to make the pie chart in Fig. 6.
+		<table border=0 align=center>
+			<tr>
+				<td>
+				<image src="pl005005.png" align=right>
+				</td>
+				<td><a href="pl005006.png.html" target=_blank>
+				<image src="pl005006t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 5</b></td>
+				<td><b>Fig. 6</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		By selecting "Bar chart" (Fig. 7, blue cycle), a bar chart will be shown according to the same numbers.
+		<table border=0 align=center>
+			<tr><td><a href="pl005007.png.html" target=_blank>
+				<image src="pl005007t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 7</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Other functions include:
+			<ol type=a>
+			<li>File -> Save table: Save listed information in the table.
+			<li>File -> Save figure: Save the chart.
+			</ol>
+		<br clear=all>
+		
+		</ol>
+
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+	<head><title>GOBU - Case Studies - Inparanoid</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+	<h1>Case Studies - Inparanoid</h1>
+	
+	You may omit <i>Examples</i> for skipping operational content.
+	
+	<ul>
+		<li>
+		<a href="http://inparanoid.sbc.su.se/">Inparanoid</a> is a program that produces orthologous groups of two given species. In this case study, we use NCBI refseq human (build 33) and mouse (build 30) proteins as input. The output of the Inparanoid program is in a hierarchical structure; that is, input proteins are partitioned into <i>orthologous groups</i>, and there are human sub-group and mouse sub-group in each orthologous group.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs002001.png.html" target=_blank>
+				<image src="cs002001t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		Such a hierarchical output data can be easily organized as GOBU input. For each orthologous group, we use a user node "tax9606" to represent the human sub-group, and "tax10090" for mouse sub-group. To present the special relationship of each orthologous group, we assign each orthologous group node as a <i>unit node</i>. Every unit node will be shown with a "U" icon.<p>
+			<ul>
+				<li><i>Example</i>: Select File -&gt; Load, open "inparanoidTax9606Tax10090.tree" file, the human-mouse orthologous data will be loaded.</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><image src="cs002002.png" align=right></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		We also download GO annotations and location information from NCBI database and assign these annotations to refseq proteins. Here we use the <i>LOC property</i> for representing location information.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="cs002003.png.html" target=_blank>
+				<image src="cs002003t.png" alt="click to enlarge" align=right></a></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		Under GOBU's extendable architecture, we built an extension software (plugin) called <i>ConservedSegmentView</i>. ConservedSegmentView enables biologists to brwose orthologous relationships (in terms of proteins) in conserved segment pairs.<p>
+		As shown in the figure, the two black bars are a human chromosome segment and a mouse chromosome segment, which are curated as a syntenic block by the <a href="http://synteny.ibms.sinica.edu.tw/">UM-mathod</a>. Red boxes are protein locations (according to LocusLink table loc2ref and NCBI MapViewer data). A gray line linking two red boxes means an orthologous relationship curated by Inparanoid. We expect to see colinear gray lines in all conserved segment pairs.
+		<table border=0 align=center>
+			<tr>
+				<td><image src="cs002004.png" align=right></td>
+			</tr>
+		</table>
+		</li>
+		
+		<li>
+		Once we really prepar data in a <i>fine</i> organization, we can perform some interesting comparisons. For example, we may compare two synteny mappings. Here we give two observations:<p>
+			<ul>
+				<li><i>Example</i>: Select File -&gt; Add, open "synteny1.tree" in <i>config</i> sub-folder. Select File -&gt; Add, open "synteny2.tree" in <i>config</i> sub-folder.</li>
+			</ul>
+		<table border=0 align=center>
+			<tr>
+				<td><image src="cs002005.png" align=right></td>
+			</tr>
+		</table>
+		<ol>
+			<li>
+			Two black bars are the two segments of a conserved segment pair curated by the second synteny mapping method. Green boxes are protein locations. Gray lines are orthologous relationships. Red boxes are conserved segments curated by the first synteny mapping method, two red boxes with the same name mean a conserved segment pair by the first method. In this figure, we found some possible inaccuracy of the second method.<p>
+				<ul>
+					<li><i>Example</i>: Select Plugins -&gt; Conserved Segment View, a small window will appear in the upper-left cornor of your screen, double-click on "Synteny Mapping #2", a ConservedSegmentView window will appear. Back to GOBU main window, click on Ortholog Curation node, then orthologous relationships will be drawn in the ConservedSegmentView window. Select Additive option and select a new color in the ConservedSegmentView window. Back to GOBU main window, expand Synteny Mapping Configurations node, then click SyntenyConfig:Synteny Mapping #1 node, then the ConservedSegmentView window will show both orthologous relationships and conserved segments in Synteny Mapping #1.</li>
+				</ul>
+			<table border=0 align=center>
+				<tr>
+					<td><image src="cs002006.png" align=right></td>
+				</tr>
+			</table>
+			</li>
+			
+			<li>
+			Similarly, we also found the possible inaccuracy of the first method.<br clear=all><p>
+			<table border=0 align=center>
+				<tr>
+					<td><image src="cs002007.png" align=right></td>
+				</tr>
+			</table>
+			</li>
+		</ol>
+		</li>
+	</ul>
+
+	</body>
+</html>

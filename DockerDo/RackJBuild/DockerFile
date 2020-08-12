@@ -1,0 +1,44 @@
+FROM yxl8241/teaser:base
+
+USER root
+WORKDIR /Tools
+
+ADD sam-1.89.jar sam-1.89.jar
+ADD gobu gobu/
+
+RUN wget -q https://downloads.apache.org/ant/binaries/apache-ant-1.10.8-bin.tar.bz2 \
+	&& tar jxvf apache-ant-1.10.8-bin.tar.bz2 \ 
+	&& chmod -R a+x apache-ant-1.10.8/ \
+	&& rm -f apache-ant-1.10.8-bin.tar.bz2
+	
+ENV ANT_HOME=/Tools/apache-ant-1.10.8
+
+RUN wget -q -O samtools-0.1.19.tar.bz2 https://sourceforge.net/projects/samtools/files/samtools/0.1.19/samtools-0.1.19.tar.bz2/download \
+	&& tar jxvf samtools-0.1.19.tar.bz2 \
+	&& make -C samtools-0.1.19 \
+	&& chmod -R a+x samtools-0.1.19 \
+	&& rm -f samtools-0.1.19.tar.bz2
+
+RUN wget -q -O bowtie2-2.0.6-linux-x86_64.zip https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.0.6/bowtie2-2.0.6-linux-x86_64.zip/download \
+	&& unzip bowtie2-2.0.6-linux-x86_64.zip \
+	&& rm -f bowtie2-2.0.6-linux-x86_64.zip
+
+RUN wget -q http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/blat/blat 
+#RUN wget -q -O sam-1.89.jar https://github.com/broadinstitute/picard/archive/1.89.tar.gz 
+
+RUN svn checkout svn://svn.code.sf.net/p/rackj/code/tags/trunk rackJ
+ADD build.in.xml rackJ/build.in.xml 
+
+WORKDIR rackJ 
+RUN $ANT_HOME/bin/ant -f build.xml
+
+WORKDIR /
+RUN chmod -R a+x /Tools
+
+USER bictool
+
+ENV PATH=$PATH:/Tools:/Tools/samtools-0.1.19:/Tools/bowtie2-2.0.6
+ENV PATH=$PATH:/Tools/rackJ:/Tools/rackJ/scripts:/Tools/rackJ/scripts/special:/Tools/rackJ/scripts/pipeline
+ENV INC=/Tools/rackJ/scripts/PerlLib
+
+CMD ["/bin/bash"]

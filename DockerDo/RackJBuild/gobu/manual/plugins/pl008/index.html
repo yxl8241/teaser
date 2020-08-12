@@ -1,0 +1,145 @@
+<html>
+	<head><title>GOBU - Plugin - FastInput</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">FastInput</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+		<li><a href="#goEx">An example of GO-enrichment analysis</a>
+		<li><a href="#note">Special notes</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+        This plugin is designed for fast generating user data given that a <i>reference</i> user data is loaded. All we need to do is to (1) select a reference from user tree, (2) assign a name for the new data, and (3) give an accession list of the new data. Specifically, you would have found this plugin useful if you are going to do <a href="../pl007/index.html">GO-enrichment analysis</a> with a reference user data of a whole genome.</p>
+		<table border=1 align=center>
+			<tr>
+				<td>
+				<image src="pl008001.png" align=right>
+				</td>
+				<td><a href="pl008002.png.html" target=_blank>
+				<image src="pl008002t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl008003.png.html" target=_blank>
+				<image src="pl008003t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td>
+				<image src="pl008004.png" align=right>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Given some user data loaded.
+				</td>
+				<td>
+				Specify a source and give a name.
+				</td>
+				<td>
+				Input an accession list.
+				</td>
+				<td>
+				A new subset is created.
+				</td>
+			</tr>
+		</table>
+		<br clear=all>
+
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="goEx">An example of GO-enrichment analysis</a></h3>
+		In this example, with a reference user data of <i>Arabidopsis thaliana</i>, we present how to do GO-enrichment analysis using this plugin and the <a href="../pl007/index.html">MultiView plugin</a> step by step.
+		<ol>
+
+		<li>
+		File -&gt; Load, open the file "Arabidobsis.reference.tree". A user tree node named "reference" will be loaded, which contains 27235 locus accessions of arabidobsis protein-coding genes.
+		<table border=0 align=center>
+			<tr><td><a href="pl008005.png.html" target=_blank>
+				<image src="pl008005t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+		</table>
+		<br clear=all>
+
+		<li>
+		Plugins -&gt; FastInput, a wizard of this plugin will be showed.
+		<table border=0 align=center>
+			<tr><td>
+				<image src="pl008006.png">
+			</td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		In this example, we are going to extract user data of transcription factors from the reference, so select "reference" as the reference and input "TFs" as the name of the new tree node. Then click the "Next" button. Note that the "Next" button will be disabled if you input a name that is the same with some existing node.
+		<table border=0 align=center>
+			<tr><td>
+				<image src="pl008007.png">
+			</td></tr>
+		</table>
+		<br clear=all>
+
+		<li>
+		The next window asks for gene accessions of TFs. Open the file "At_Transcription_factors.txt" with any text editor. This file contains accessions of TFs, copy all of them (in Windows systems, use &ltctrl&gt-C). Then paste them to the window (in Windows systems, use &ltctrl&gt-V). Then click the "Finish" button.
+		<table border=0 align=center>
+			<tr><td>
+				<image src="pl008008.png">
+			</td></tr>
+		</table>
+		<br clear=all>
+
+		<li>
+		A minor message window will appear, which tells accessions that are not in the specified reference. In this example, they are not protein-coding genes in <a href="http://www.arabidopsis.org/index.jsp">the TAIR database</a>. Examine them if you like. Click "OK" to finish this plugin.
+		<table border=0 align=center>
+			<tr><td>
+				<image src="pl008009.png">
+			</td></tr>
+		</table>
+		<br clear=all>
+
+		<li>
+		A node named "TFs" will be added in the user tree. This node contains 1,815 arabidobsis transcription factors.
+		<table border=0 align=center>
+			<tr><td><a href="pl008010.png.html" target=_blank>
+				<image src="pl008010t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+		</table>
+		<br clear=all>
+
+		<li>
+		Invoke <a href="../pl007/index.html">the MultiView plugin</a> and perform a GO-enrichment analysis. You will find that regulation-related GO terms are ranked at the top.
+		<table border=0 align=center>
+			<tr><td><a href="pl008011.png.html" target=_blank>
+				<image src="pl008011t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+		</table>
+		<br clear=all>
+
+		</ol>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="note">Special notes</a></h3>
+		
+		<ol>
+
+		<li>
+		The reference user data of <i>Arabidopsis thaliana</i>, i.e., the file "Arabidobsis.reference.tree", <a href="../../technical/index.html#aaUtil">integrates information</a> like locus accessions, gene symbols, descriptions, GO annotations, and AraCyc pathways. You may use this plugin and the <a href="../pl003/index.html">Listing plugin</a> to build a table of any gene list that includes any information as you like.
+
+		</ol>
+
+	</body>
+</html>

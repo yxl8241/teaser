@@ -1,0 +1,292 @@
+<html>
+	<head><title>GOBU - Operation Manual</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">home</a></td></tr></table>
+	<body>
+		<h1><a name="top">Operation Manual</a></h1>
+		In this page we describe all operations and related rules of GOBU program. For operation details of extension software (plugins), please refer the <a href="../plugins/index.html">Plugin Page</a>.<p>
+		
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#preface">Preface</a>
+		<li><a href="#install">Installation</a>
+		<li><a href="#folders">GOBU Sub-Folders</a>
+		<li><a href="#treeComponents">Tree Components</a>
+			<ol type=a>
+			<li><a href="#userTree">User Tree</a>
+			<li><a href="#goTree">GO Tree</a>
+			<li><a href="#userTreeP2">User Tree -- Revisit</a>
+			<li><a href="#fGoTree">Focus GO Tree</a>
+			</ol>
+		<li><a href="#menuBar">Menu Bar</a>
+			<ol type=a>
+			<li><a href="#file">File</a>
+			<li><a href="#search">Search</a>
+			<li><a href="#option">Option</a>
+			<li><a href="#tools">Tools</a>
+			<li><a href="#table">Table</a>
+			<li><a href="#plugins">Plugins</a>
+			</ol>
+		<li><a href="#tips">Useful Tips</a>
+		</ol>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="preface">Preface</a></h3>
+		This document is written under following rules:
+		<ul>
+		<li>GOBU design is based on some <i><b>definitions</b></i>, so we tried to make the first appearance of a GOBU-jargon <i><b>bold and italic</b></i>.
+		<li>We use <i>&lt;selection 1&gt;</i> -&gt; <i>&lt;selection 2&gt;</i> -&gt; ... to denote a series of menu selection operations.
+		</ul>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="install">Installation</a></h3>
+		<ul>
+		<li> System requirements
+			<ol>
+			<li>OS: any 64-bit OS
+			<li>RAM: 2GB (the more, the better)
+			<li>Java Runtime Environment 6 (or later) 64-bit version
+			</ol>
+		<li>Installation instruction
+			<ol>
+			<li>Be sure that you had installed Java Runtime Environment (JRE) in your computer. If you havn't, we advise you to download JRE from <a href="http://java.sun.com/">java.sun.com</a>. In case that you don't know how to download/install JRE, please contace your technical support.
+			<li><a href="../index.html#download">Download GOBU</a>.
+			<li>Decide one place as your <i><b>GOBU folder</b></i>.
+			<li>Uncompress downloaded GOBU file to the folder that containing your GOBU folder, remember to check the option "uncompress with pathname" or something like that.
+			</ol>
+		<li>For Windows
+		<li>For MacOS
+		<li>Run!
+			<ul>
+			<li>For Windows users, doulbe-click on the file "gobuCmd.bat" in GOBU folder.
+			<li>For UN*X users, please refer the command in the file "gobuCmd.bat".
+			</ul>
+		</ul>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="folders">GOBU Sub-Folders</a></h3>
+		There are several sub-folders in GOBU folder, here is the list:
+		<ul>
+		<li>config: This folder stores useful informations for GOBU extension software (<i><b>plugins</b></i>).
+		<li>data: This folder stores GO files, including "component.ontology.txt", "function.ontology.txt" and "process.ontology.txt". You can just download them from the download area of <a href="http://www.geneontology.org/">Gene Ontology Consortium</a>. From version <b>0.95</b>, this folder stores only one file gene_ontology.1_2.obo.txt, which is the OBO-format GO data file (the filtered ontology). You may download it from the download area of <a href="http://www.geneontology.org/">Gene Ontology Consortium</a>.
+		<li>icon: Icon files used by GOBU program.
+		<li>manual: Documents of GOBU, in HTML format.
+		<li>plugins: For placing plugin programs.
+		<li>properties
+		<li>user: For storing user data.
+		</ul>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="treeComponents">Tree Components</a></h3>
+		In GOBU program, you will see three tree components in the main window. They are (Fig. 1, from left to right): the <i><b>GO Tree</i></b>, the <i><b>User Tree</i></b> and the <i><b>Focus GO Tree</i></b>.
+		<table border=0 align=center>
+			<tr><td><a href="op0001.png.html" target=_blank>
+					<image src="op0001t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 1</b></td></tr>
+		</table>
+		
+		<h5><a name="userTree">User Tree</a></h5>
+		User tree represents user data. Every time you load a file by File -&gt; Load, the loaded data will be visualized as its tree structure. We call nodes of the user tree as <i><b><a name="userNode">user nodes</a></i></b>. There are five classes of user nodes:
+		<ol>
+		<li><i><b>Representative nodes</b></i> (<i><b>R-nodes</b></i> for short): These nodes are the <i>basic elements</i> of user data, one may image that R-nodes are genes, ETSs or proteins of their input data. These nodes will be shown with "R" icons.
+		<li><i><b>GO annotations</b></i>: These nodes are the GO annotations of R-nodes. An R-node with a descendant GO annotation means an R-node <i>having</i> this GO annotation. These nodes will be shown with "GO" icons. We also append "C)" ("F)" or "P)" respectively) at the beginning of <i>component</i> (<i>function</i> or <i>process</i> respectively) GO annotations.
+		<li><i><b>Property nodes</b></i> (<i><b>P-nodes</b></i> for short): These nodes represent user-defined data types. For every property node, we use a colon to divide the node string into two sub-strings: the first sub-string for the <i>type</i> of this node and the second sub-string for the <i>content</i> of this node. For example (in our case studies <a href="../casestudies/cs001/index.html">1</a> &amp; <a href="../casestudies/cs002/index.html">2</a>), we defined a data type called "LOC" which means "location", and the node string "LOC:(11562763,12119228)@chr13@Mouse" means
+			<ul>
+			<li>this P-node is of type "LOC"
+			<li>this P-node represents a location from 11562763 to 12119228 bp on Mouse 13rd chromosome
+			</ul>
+		P-nodes will be shown with "P" icons.
+		<li><i><b>Unit nodes</b></i>: These nodes represent the <i>unit</i> relationships (of R-nodes) in user tree. For example, in our case study <a href="../casestudies/cs002/index.html">2</a>, we assign the nodes of orthologous groups as the unit nodes. These nodes will be shown with "U" icons.
+		<li><i><b>normal nodes</b></i>: Other nodes shown with dot icons.
+		</ol>
+		
+		<h5><a name="goTree">GO Tree</a></h5>
+		Here we suppose that you know what GO is (If you don't, please visit <a href="http://www.geneontology.org/">Gene Ontology Consortium</a>). The GO tree shows the GO structure, and we call nodes of the GO tree as <i><b>GO nodes</i></b>. By treating descendant user nodes of an R-node  as its annotations, R-nodes in the user tree are <i><b>mapping</i></b> to corresponding GO nodes in the GO tree, and corresponding ancestral GO nodes. That is, R-nodes are mapping to their GO annotations on the GO tree (see Fig. 2) and their GO annotations' ancestors. For each GO node, we compute the number of R-nodes mapping to it, and show this number (in parentheses) in the GO node if there is at least one R-node mapping to it. Hereinafter, we call these numbers on GO tree as the <i><b>GO distribution</b></i>.
+		<table border=0 align=center>
+			<tr><td><a href="op0002.png.html" target=_blank>
+					<image src="op0002t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 2</b></td></tr>
+		</table>
+		The following three buttons belonging to GO tree may facilitate the observation of GO distribution:
+		<ul>
+		<li><image src="op0003.png"> To ignore GO nodes for computing the mapping relationships and the GO distribution, you can <a href="#treeNodeSelection">select</a> GO nodes and mark them as <i><b>disabled</b></i> by clicking this button. By the same way, you can enable the disabled GO nodes. Note that the disabled GO nodes won't be ignored until you press <i>down</i> next button. Disabled GO nodes will be shown with gray icons.
+		<li><image src="op0004.png"> This is a toggle button. By pressing <i>down</i> this button, the disabled GO nodes (including their descendants) will be removed. The GO distribution will be recomputed after the removing.
+		<li><image src="op0005.png"> This is a toggle button. In any case, GO nodes with zero GO distribution will be removed by pressing <i>down</i> this button.
+		</ul>
+		<br clear=all>
+		
+		<h5><a name="userTreeP2">User Tree -- Revisit</a></h5>
+		User nodes' icons are colored according the last selected GO node. First the last selection of the GO node means a selection of GO sub-tree rooted at the GO node. Then by coloring all <i>selected</i> GO annotations in the user tree, GOBU will color a user node if it has a colored descendant GO annotation (see Fig. 3).
+		<table border=0 align=center>
+			<tr><td><a href="op0006.png.html" target=_blank>
+					<image src="op0006t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 3</b></td></tr>
+		</table>
+		For every user node, the number <i>a</i> of its colored descandent R-nodes and the number <i>b</i> of all its descandent R-nodes will be shown in its node string in the form "(<i>a</i>/<i>b</i>)".<p>
+		Sometimes we may want to filter out uncolored (i.e. gray) user nodes. To do this, we have to choose appropriate <i><b>appearance level</b></i>:
+		<ul>
+		<li>All: no filtering.
+		<li>Unit: filter out uncolored unit nodes, and their uncolored ancestors.
+		<li>Representative: filter out uncolored R-nodes, and their uncolored ancestors.
+		</ul>
+		<br clear=all>
+
+		<h5><a name="fGoTree">Focus GO Tree</a></h5>
+		The focus GO tree gives a summary of every click on nodes of the user tree or the GO tree:
+		<ul>
+		<li>click on a GO node, the focus GO tree will be a partial-tree of the GO tree, composed of all paths from the GO Root to the clicked GO node. It should be noticed that some GO nodes have multiple locations on the GO tree, and the clicked GO node will be shown "selected".
+		<li>click on a colored user node, the focus GO tree will be a partial-tree of the GO tree, composed of all paths from the GO Root to colored descendant GO annotations of the clicked user node. These GO annotations will be shown "selected" (see Fig. 4).
+		</ul>
+		<table border=0 align=center>
+			<tr><td><a href="op0007.png.html" target=_blank>
+					<image src="op0007t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 4</b></td></tr>
+		</table>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="menuBar">Menu Bar</a></h3>
+		
+		<h5><a name="file">File</a></h5>
+		<ul>
+		<li><b>Load:</b> Load a file.
+		<li><b>Add:</b> Load a file in an additive fashion; that is, load additional data without removing current user tree content.
+		<li><b>Save:</b> Save the <a href="#tools">&quot;reset&quot;</a> user tree of <a href="#userTreeP2">appearance level &quot;All&quot;</a>. This function would be helpful for storing combination of user trees, or a user tree made by the <a href="../plugins/pl008/index.html">FastInput plugin</a>.
+		<li><b>Exit:</b> Exit GOBU.
+		</ul>
+		
+		<h5><a name="search">Search</a></h5>
+		<table border=0 align=center>
+			<tr><td><image src="op0008.png" align=right></td></tr>
+			<tr align=center><td><b>Fig. 5</b></td></tr>
+		</table>
+		<ul>
+		<li><b>Search GO tree:</b> A dialog for searching GO tree will be launched by selecting this menu item.
+		<li><b>Search user data:</b> A dialog for searching user tree will be launched by selecting this menu item.
+		<li><b>Search focus GO tree:</b> A dialog for searching focus GO tree will be launched by selecting this menu item.
+		<li><b>Find:</b> Clicking <i>Find</i> button, the search function will be performed in pre-order (an informatics jargon) fashion by following steps:
+			<ol>
+			<li>If <i>Search GO ID</i> option is checked, input string will be read as an integer. The first GO node (in the GO tree) or GO annotation (in the user tree) having input GO ID will be selected. If this option is not checked, see the following steps.
+			<li>If <i>Search paths</i> option is checked, GOBU will search tree path strings starting from root. Otherwise, GOBU will search tree node strings. NOTE: a <i><b><a name="#treePathString">tree path string</a></b></i> is the concatenation of tree node strings with "\t" (anti-slash and letter t) as internal edges.
+			<li>If <i>Ignore case</i> option is checked, the search will be performed in a case-insensitive fashion.
+			<li>If <i>Wildcard search</i> option is checked, the input string will be treated as a wildcard pattern. That is, a starsign ('*') means arbitrary substring (including empty string) and a question mark ('?') means exactly one unknown character. In case that option <i>Search paths</i> is checked, you could use "\t" (anti-slash and letter t) to describe an ancestor-descendant relationship. If this option (<i>Wildcard search</i>) is not checked, GOBU will search things (nodes or paths, according your option) containing all inputted words.
+			<li>Examples:	
+				<ul>
+				<li>input string "zinc ion" and no checked option: Searching for tree nodes with tree node strings containing substrings "zinc" and "ion"
+				<li>input string "*zinc ion*????" and checked <i>Wildcard search</i> option: Searching for tree nodes with tree node strings containing substring "zinc ion" and at least four letters beyond "zinc ion".
+				<li>input string "*iron*\t*ion*" and checked <i>Wildcard search</i> and <i>Search paths</i> options: Searching for tree paths with one node string containing substring "iron" and a descendant node string containing substring "ion".
+				</ul>
+			</ol>
+		<li><b>Find next subtree:</b> By clicking <i>Find next subtree</i> button, the sub-tree rooted at current selection will be omitted for search. NOTE: If the current selection is root or no current selection, the whole tree will be omitted for search and find nothing.
+		<li><b>Iterate all:</b> By clicking <i>Iterate all</i> button, GOBU will search the whole tree (starting from root) and make a selection on every matched tree node. This button should be useful for some extension software. NOTE: This search function is time-consuming.
+		</ul>
+		<br clear=all>
+		
+		<h5><a name="option">Option</a></h5>
+		<ul>
+		<li><b>Tracing:</b>
+			<ul>
+			<li><font color=red>CAUTION:</font> It might make you confused by checking this option, please read our description carefully.
+			<li>This option is not checked by default, we call the default mode as the <i><b>non-tracing mode</b></i>. In the non-tracing mode, tree operations are as described in <a href="#treeComponents">Tree Components</a> section.
+			<li>By checking this option, GOBU will enter the <i><b>tracing mode</b></i>. The basic idea of the tracing mode is that: GOBU will maintain a set of R-nodes as your current selection and these <i>selected</i> R-nodes will be colored. Under the tracing mode, the effect of tree node selection is:
+				<ol>
+				<li>Selection on the GO tree: The maintained set will be colored R-nodes that have a GO annotation which is (a descendant of) selected GO node.
+				<li>Selection on the user tree: The maintained set will be colored R-nodes that are (descendants of) selected user node. The GO distribution on GO tree will be recomputed according the new maintained set and corresponding colored GO annotations.
+				</ol>
+			<li>Example:
+				<ol>
+				<li>File -&gt; Load, open the file "HumanGene.tree"
+				<li>Option -&gt; Tracing, then you will see <i>Tracing</i> become checked.
+				<li>Clicking on any chromosome user node. You will find that GO distribution is recomputed.
+				<li>Expand any collapsed GO node, then click the <i>Mapped only</i> button. You will find that GO nodes without <i>mapping</i> R-nodes are removed.
+				<li>Click on any GO node, then set <i>appearance level</i> to <i>representative</i>. You will find that R-nodes without your selected GO annotation are removed.
+				<li>Click on any map location user node. You will find that the GO distribution is recomputed again.
+				</ol>
+			</ul>
+		<li><b>Show only selected GO terms in focus tree:</b> This option is checked by default. If not checked, clicking on any user node will show a focus GO tree composed of all paths from the GO Root to all descendant GO annotations of the clicked user node.
+		</ul>
+		
+		<h5><a name="tools">Tools</a></h5>
+		<ul>
+		<li><b>Reset:</b> This menu item resets GO tree and user tree to their initial conditions.
+		<li><b>Watch GOIDs:</b> This menu item will invoke a simple window (see Fig. 6) that allowing you to input a set of GOIDs (in integers) and watching the sub-GO-tree that containing them. The output sub-GO-tree will be shown by the focus GO tree, selected tree nodes are of the input GOID numbers.
+			<table border=0 align=center>
+				<tr><td><a href="op0010.png.html" target=_blank>
+						<image src="op0010t.png" alt="click to enlarge" align=right>
+				</a></td></tr>
+				<tr align=center><td><b>Fig. 6</b></td></tr>
+			</table>
+		</ul>
+		
+		<h5><a name="table">Table</a></h5>
+		GOBU helps you to build a table as in Fig. 7, where each cell means the number of R-nodes having a given GO annotation (or its descendant GO annotation) under a specified user node. We also append a column of GOIDs in integers for advanced usage.
+		<table border=0 align=center>
+			<tr><td><a href="op0009.png.html" target=_blank>
+					<image src="op0009t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 7</b></td></tr>
+		</table>
+		<ul>
+		<li><b>Reporting nodes:</b> First you have to specify the GO annotations you want to see in the table.
+			<ul>
+			<li><b>Toggle reporting:</b> Set GO nodes as <i><b>reporting</b></i> (or <i>non-reporting</i>) by <a href="#treeNodeSelection">selecting</a> GO nodes, then choose Table -&gt; Reporting nodes -&gt; Toggle reporting.
+			<li><b>Show all:</b> To see which GO node you have selected, choose this menu item. Reporting GO nodes will be shown in the focus GO tree (with red icons).
+			<li><b>Clear:</b> To set all GO nodes as non-reporting.
+			</ul>
+		<li><b>Append data:</b> Selecting this menu item will append one more column to the table. The append numbers will be the GO distribution on the GO tree; that is, you better perform this action in <i>tracing</i> mode. See <a href="#tableEx">below</a> for an example.
+		<li><b>Show table:</b> Show the table window. Two simple functions are provided by the table window:
+			<ol>
+			<li>(in table window) File -> Save as: You can save this table as a file, including an Excel format file. By selecting meaningful GO terms through some other applications, you can copy corresponding GOIDs and input them into the <a href="#tools">Watch GOIDs</a> window.
+			<li>Delete column: Sometime you may add an undesired column in accident. By clicking on any cell of that column and clicking this button, the undesired column will be deleted.
+			</ol>
+		<li><a name="tableEx">Example</a>:
+			<ol>
+			<li>File -&gt; Load, open the file "HumanGene.tree"
+			<li><a href="#treeNodeSelection">Select</a> all child GO nodes of "cellular_component".
+			<li>Table -> Reporting nodes -> Toggle reporting
+			<li>Option -> Tracing
+			<li><a href="#treeNodeSelection">Select</a> chr1, chr2 and chr3.
+			<li>Table -> Append data
+			<li>Table -> Show table
+			</ol>
+			Then you will see a table as in Fig. 7. To build up your own table, we advise you to follow a procedure like this example.
+		</ul>
+		<br clear=all>
+		
+		<h5><a name="plugins">Plugins</a></h5>
+		You can access some GOBU plugins through this menu, but we don't promise the accessibility of every plugin -- it depends on the design of each plugin. Here we list some <i>general</i> plugins provided as a part of GOBU (for other plugin information, please refer <a href="../plugins/index.html">Plugin Page</a>):
+			<ul>
+			<li><i>Configuration Plugin</i>: This plugin shows some user specified <i>light-weight</i> information (from <i>config</i> sub-folder) and system related information. These information will be shown in a tree structure and we call this tree as the <i><b>config tree</b></i>. In the config tree, the sub-tree rooted at "Configuration<font color=red>\t</font>System Information<font color=red>\t</font>Plugins" (this is a <a href="#treePathString">tree path string</a>) shows plugins held by GOBU.
+			<li><i>Quick Jump Plugin</i>: In the focus GO tree, the whole GO tree information is hidden, and you may want to browse some interested node in the GO tree. By clicking on the interested node and mouse-right-click, there will be a popup menu. Select "Jump to" and the corresponding node in the GO tree will be selected.
+			<li><i>Amigo Plugin</i> and <i>QuickGO Plugin</i>: Sometimes you may want to read detailed GO information of some interested node in (focus) GO tree. By clicking on the interested node and mouse-right-click, there will be a popup menu. Select "AmiGO!" or "QuickGO!" and a plugin window will be shown on the screen. In this window, a corresponding web page of <a href="http://www.godatabase.org/cgi-bin/amigo/go.cgi?search_constraint=terms&action=replace_tree">AmiGO</a> or <a href="http://www.ebi.ac.uk/ego/">QuickGO</a> will be displayed. However, we advise you to use your own web browser to browse related pages. To do this, you have to specify your browser location by clicking <i>Setup browser</i> button (you may ask a technician for helps) and this information will be saved. After setting up browser location, you can click <i>Use browser</i> button to use your own browser for browsing these web pages.
+			<li><i>Expand Tree Plugin</i>: Sometimes you may want to browse the expanded subtree rooted at a given node, and this plugin could help you to expand specified subtrees. To do this, you have to click a node of the GO tree or the User Tree, and mouse-right-click, select "Expand subtree" in the popup menu. Usually this operation is time-consuming, so it is good idea to press down the <a href="#goTree">"Mapped only" button</a> before doing any expanding in GO tree.
+			</ul>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="tips">Useful Tips</a></h3>
+		
+		<h5><a name="treeNodeSelection">Tree Node Selection</a></h5>
+		There are some ways to select <i>multiple</i> tree nodes:
+		<ol>
+		<li>Select a range of nodes: Mouse-left-click on first tree node, then hold on &lt;shift&gt; key and mouse-left-click on second node. Nodes between first node and second node will be selected.
+		<li>Select/De-select: Hold on &lt;ctrl&gt; key and mouse-left-click on any tree node. Clicked nodes will be selected or de-selected.
+		</ol>
+
+	</body>
+</html>

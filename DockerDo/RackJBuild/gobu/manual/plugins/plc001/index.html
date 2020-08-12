@@ -1,0 +1,82 @@
+<html>
+	<head><title>GOBU - Plugin - Ferret Plugin</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">Ferret Plugin</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+		<li><a href="#usage">Usage</a>
+		<li><a href="#configTree">Config Tree</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+		<font color=red>(The Ferret plugin is not provided in newer version of GOBU, please refer our source repository if you are interested.)</font> This is a customized plugin for our on-going EST annotation project. This plugin includes a sequence window and a zebrafish genome drawing window.
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="usage">Usage</a></h3>
+		<ol>
+		<li>
+		<table border=0 align=right>
+			<tr><td><image src="plc001001.png" align=right></td></tr>
+			<tr align=center><td><b>Fig. 1</b></td></tr>
+		</table>
+		Plugins -&gt; Ferret plugin. A window called "FerretPlugin Main Window" will appear, usually in the upper-left corner of your screen.
+		<br clear=all>
+		
+		<li>
+		<table border=0 align=right>
+			<tr><td><a href="plc001002.png.html" target=_blank>
+				<image src="plc001002t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 2</b></td></tr>
+		</table>
+		Click <i>Sequence Window</i> button, then a window called "Ferret - Sequence" will appear. This window will display sequence information of user selection.
+		<br clear=all>
+		
+		<li>
+		Click <i>Zebrafish Genome View</i> button, then a window called "Ferret - Zebrafish Genome View" will appear. This window will show all zebrafish genome.<p>
+		Generally speaking, the usage of this window is almost the same with <i><a href="../pl001/index.html#usage">Genome View</a></i> window of <i><a href="../pl001/index.html">Genome View Plugin</a></i> except the additional <i>Confidence filter</i> option.<p>
+		Once the <i>Confidence filter</i> is checked (i.e. selected), every new incoming drawing will be restricted to best LOC P-node (i.e. most confident and longest LOC P-node).
+		<table border=0 align=center>
+			<tr>
+				<td><a href="plc001003.png.html" target=_blank>
+					<image src="plc001003t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="plc001004.png.html" target=_blank>
+					<image src="plc001004t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr>
+				<td align=center><b>Fig. 3</b></td>
+				<td align=center><b>Fig. 4</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="configTree">Config Tree</a></h3>
+		<i>&lt;ItalicString&gt;</i> means a variable.<p>
+		This plugin obtains zebrafish chromosome lengths from <i><a href="../index.html#configTree">config tree</a></i>. A descendant <i>GenomeName</i> P-node called "Zebrafish" under <i>Genome Information</i> P-node must be provided. Under <i>GenomeName</i> P-node "Zebrafish", <a href="../../operational/index.html#userTree">normal</a> child nodes must in the form <i>&lt;chromosome name&gt;</i>:<i>&lt;chromosome length&gt;</i>.<p>
+		See file "ZebrafishChrInfo.tree" in <i>config</i> sub-folder for examples.
+
+	</body>
+</html>

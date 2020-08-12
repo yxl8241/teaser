@@ -1,0 +1,183 @@
+<html>
+	<head><title>GOBU - Plugin - MultiView</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">MultiView</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+			<ol type=a>
+			<li><a href="#note">Special notes</a>
+			</ol>
+		<li><a href="#userData">User data</a>
+		<li><a href="#wizard">Wizard</a>
+		<li><a href="#mvTable">MultiView Table</a>
+		<li><a href="#dagView">DAG View</a>
+		<li><a href="#parallel">Parallel Display</a>
+			<ol type=a>
+			<li><a href="#pOE">Operational example</a>
+			</ol>
+		<li><a href="#powerpoint">PowerPoint File</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+        This plugin is designed for facilitating browsing significance levels and/or sizes of multiple sets of interested genes with respect to GO terms. The user interface of this plugin is composed of three modules: <b>(1) MultiView table</b>: a sortable table whose rows are indexed by GO terms, and each GO term is associate with enriched significance levels and/or sizes of multiple sets of genes, <b>(2) Parallel Display</b>: a visualization component which translates data of MultiView table into records in a parallel coordinate display system, and <b>(3) DAG View</b>: displays directed acyclic (DAG) graph of user specified GO terms.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl007001.png.html" target=_blank>
+				<image src="pl007001t.png" alt="click to enlarge" align=cente>
+				</a></td>
+				<td><a href="pl007002.png.html" target=_blank>
+				<image src="pl007002t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl007003.png.html" target=_blank>
+				<image src="pl007003t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 1</b> MultiView</td>
+				<td><b>Fig. 2</b> Parallel Display</td>
+				<td><b>Fig. 3</b> DAG View</td>
+			</tr>
+		</table>
+		<br clear=all>
+
+		<h5><a name="note">Special notes</a></h5>
+		<ol>
+		<li>Significance levels are computed by binomial test or Fisher's exact test (user specified), where the computing module of the Fisher's exact test is modified from the java script of <a href="http://www.langsrud.com/stat/">Dr. Oyvind Langsrud</a> (see <a href="http://www.langsrud.com/fisher.htm">here</a>).
+		<li>Parallel Display module is modified from <a href="http://home.subnet.at/flo/mv/parvis/background.html">Parvis</a>.
+		<li>The sortable table module is copied from <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">Sun's tutorial on how to use tables</a>.
+		<li>The <a href="http://www.graphviz.org/">Graphviz</a> software is required for drawing DAG graphs.
+		<li>Please be sure to cite the paper coauthored by Alexa et al. (PMID:16606683) for the TopGO <i>elim</i> algorithm.
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="userData">User data</a></h3>
+        This plugin computes P-values that measure whether or not GO categories are 'over-represented' in user-defined sets compared to a reference set, where the P-values are computed by the binomial test, the Fisher's exact test, or the TopGO <i>elim</i> algorithm (PMID:16606683, added since version <b>0.99</b>). In the user tree, we let all child nodes of the node 'User Data' represent aforementioned user-defined sets and the child node with name 'reference' represent the reference set (usually contains genes of the entire genome or a given chip). Note that this plugin will compute only gene counts if the reference set is not specified. Fig. 4 shows a user tree with eight user-defined sets and a reference set. Please also refer the <a href="../../technical/index.html">Technical Section</a> for information about constructing a user tree. Given that a predefinied reference set exists, it would be convenient to build subsets using the <a href="../pl008/index.html">FastInput plugin</a>.
+		<table border=0 align=center>
+			<tr>
+				<td>
+				<image src="pl007004.png" alt="click to enlarge" align=right>
+				</td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 4</b> An example of user tree for this plugin</td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="wizard">Wizard</a></h3>
+        Once this plugin is invoked, a wizard will ask user the following questions:
+        <ul>
+        <li> Do you want to see GO related information? General category (component, function and process) and term depth.
+        <li> Select GO sub-category for computation. Cellular component, molecular function and biological process. Only GO terms in chosen sub-category will be computed.
+        <li> Select user data sets to be computed.
+        <li> Decide to see gene counts and/or enriched significance levels. Note that enriched significance levels are selectable only if the reference set is given. Also note that enriched significance levels will not be computed for the reference set.
+        </ul>
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="mvTable">MultiView Table</a></h3>
+        After the wizard is finished, a MultiView table will be computed according the user's answer. Generally speaking, the MultiView should look like the one in Fig. 5. Each row of this table represents a GO term and corresponding information:
+        <ul>
+        <li> Term Name: the term name of the GO term
+        <li> GOID: the GOID of the Go term
+        <li> Term Type: C (component), F (function), or P (process), classifying sub-category of the GO term
+        <li> cnt(XYZ): number of genes in the user specified set XYZ belonging to this GO category
+        <li> bin(XYZ): enriched significance level computed by the binomial test
+        <li> fsh(XYZ): enriched significance level computed by the Fisher's exact test
+        <li> elim(XYZ): enriched significance level computed by the TopGO <i>elim</i> algorithm (PMID:16606683)
+        </ul>
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl007005.png.html" target=_blank>
+				<image src="pl007005t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 5</b> An example of MultiView table</td>
+			</tr>
+		</table>
+		<br clear=all>
+		Note that the MultiView talbe is <b>sortable</b>; that is, rows can be sorted according increasing/decreasing order of any user-specified column. To do this, just click on any column header. For the first click on a column header, rows will be sorted so the the corresponding column is in an increasing order. For the second click on the same column header, the column will be then sorted in a decreasing order. A third click on the same column header will unsort the table.
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="dagView">DAG View</a></h3>
+        Once some GO terms are recognized as interested to the user, it might have been useful to see positions of these GO terms in the GO hierarchy (see <a href="pl007003.png.html" target=_blank>Fig. 3</a> for an example). To do this, select multiple rows (drag mouse across rows OR hold on CONTROL key and click on rows) and choose Tools -&gt; Launch DAG View from the manu bar. If the path pointing to the <b>dot.exe</b> program of Graphviz is not set or incorrect, a file chooser will be shown for specifying a path pointing to <b>dot.exe</b>. The Graphviz software can be downloaded <a href="http://www.graphviz.org/Download.php">here</a>.
+		
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="parallel">Parallel Display</a></h3>
+		Parallel Display is a very important tool of MultiView for users to select interested GO terms. It truns the MultiView table into a parallel display system. In the parallel display system, parallel axes correspond to columns in the MultiVew table and GO terms are translated into broken lines. Every broken line (Go term) intersects a axis at the corresponding significance level (see Fig. 6 for an example). By so doing, users can see the distribution of significance levels among interested gene sets or simply select GO terms by visualization. Further, the Selection manipulation makes it possible to save selection into sets and perform logical operation. For example, it might have been interesting to see which GO terms are significant for set1 but not for set2.
+		<table border=0 align=center>
+			<tr>
+				<td>
+				<image src="pl007006.png" alt="click to enlarge" align=right>
+				</td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 6</b> Transform a GO term to the parallel display system</td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<h5><a name="pOE">Operational example</a></h5>
+		The following steps and Fig. 7 show how to select GO terms that are significant for set1 but not for set2.
+		<ol type=A>
+		<li> Drag mouse cursor across significant part of the second axis. Choose 'make selection' in the popup menu.
+		<li> Click the 'Selection manipulation' button. Click 'save' button. Give a name for the current selection.
+		<li> Drag mouse cursor across significant part of the first axis. Choose 'make selection' in the popup menu.
+		<li> In the 'selection operation' menu, select the saved selection and click 'SUB' button.
+		</ol>
+		<table border=0 align=center>
+			<tr align=center>
+				<td><b>A</b></td>
+				<td><b>B</b></td>
+			</tr>
+			<tr>
+				<td><a href="pl007007A.png.html" target=_blank>
+				<image src="pl007007At.png" alt="click to enlarge" align=cente>
+				</a></td>
+				<td><a href="pl007007B.png.html" target=_blank>
+				<image src="pl007007Bt.png" alt="click to enlarge" align=cente>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>C</b></td>
+				<td><b>D</b></td>
+			</tr>
+			<tr>
+				<td><a href="pl007007C.png.html" target=_blank>
+				<image src="pl007007Ct.png" alt="click to enlarge" align=cente>
+				</a></td>
+				<td><a href="pl007007D.png.html" target=_blank>
+				<image src="pl007007Dt.png" alt="click to enlarge" align=cente>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td colspan=2 align=center><b>Fig. 7</td>
+			</tr>
+		</table>
+		<br clear=all>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="powerpoint">PowerPoint Files</a></h3>
+		Here is a <a href="20091116_gobuMultiView.ppt">PowerPoint file</a> describes the concept of the MultiView plugin.
+
+	</body>
+</html>

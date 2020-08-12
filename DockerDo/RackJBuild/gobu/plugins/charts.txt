@@ -1,0 +1,16 @@
+The file "charts.zip" includes:
+
+A. JAR files:
+
+1. charts.jar
+2. gnujaxp.jar
+3. jcommon-1.0.0-pre2.jar
+4. jfreechart-1.0.0-pre2.jar
+5. junit.jar
+6. servlet.jar
+
+B. A GNU LGPL licence file "licence-LGPL.txt"
+
+C. other document files
+
+To install this package, just move the file "charts.zip" to your GOBU folder and uncompress it. Remember to check the option "uncompress with pathname" or something like that.

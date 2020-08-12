@@ -1,0 +1,52 @@
+<html>
+
+	<head><title>DrawFocusTree Plugin</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	
+	<body>
+		<h1><a name="top">DrawFocusTree</a></h1>
+		
+		<h3>Introduction</h3>
+		This plugin is used to draw the focus GO tree in GOBU, enabling you to browse from GO root to the focused GO nodes in a hierarchical DAG (Directed Acyclic Graph) manner. To run this plugin, installation of Graphviz is required. Graphviz is a package of visualization tools, which can downloaded<a href="http://www.graphviz.org/"> here</a>.</p> 
+
+		<h3>Usage</h3>
+		To launch this plugin from GOBU, select any node on GO tree or select a node on user tree with GO annotations on GOBU window. A corresponding focus GO tree will be shown on right panel of GOBU. Next, select "Plugins" -> "Draw Focus Tree Plugin" from GOBU menu. If this plugin had never been launched on your computer before, a dialog will be shown for you to set up the path of file "<font color="#FF0000">dot.exe</font>" (one of the visualization tools in Graphviz, on which this plugin relies for drawing). By default, all visualization tools including &quot;dot.exe&quot; are located at &quot;bin&quot; directory under &quot;Graphviz&quot; directory. Once the plugin is launched, the graph corresponding to the focus GO tree will then be shown on a new window. For example, the focus GO tree in Fig. 1 will generate a corresponding graph like Fig. 2:</p>
+
+		<table border=0 align=center>
+			<tr><td>
+				<image src="ClickUserNode.png" align=right>
+			</a></td></tr>
+			<tr><td align=center>
+				<b>Fig. 1: Selected user tree node with GO annotations</b>
+			</td></tr>
+		</table>
+
+		<table border=0 align=center>
+			<tr><td>
+				<image src="GOTreeGraph.png" align=right>
+			</a></td></tr>
+			<tr align=center><td>
+				<b>Fig. 2: Graph corresponding to Fig. 1</b>
+			</td></tr>
+		</table>
+		
+	In Fig. 2, the &quot;part of&quot; relation of GO is denoted as red lines, while a black line stands for &quot;is a&quot; relation. Focused GO nodes on focus GO tree will be drawn in a red rectangle. Once the mouse moves over a rectangle on the graph, a message carrying the text of the rectangle will be shown, which is illustrated by the "(131) ribosome(GO:0005840)" message in Fig. 2. To browse data with other interested GO terms, you can also click any rectangle on the graph, and the corresponding changes will apply to the focus GO tree and user tree (if any user data is loaded) on GOBU main window.</p>
+
+
+</body>
+
+</html>

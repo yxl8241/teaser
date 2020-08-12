@@ -1,0 +1,190 @@
+<html>
+	<head><title>GOBU - Plugin - Conserved Segment View Plugin</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">Conserved Segment View Plugin</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+		<li><a href="#usage">Usage by Example</a>
+		<li><a href="#tips">Special Tips</a>
+		<li><a href="#configTree">Config Tree</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+		This plugin will draw user selected R-nodes according their assigned location information (P-nodes representing LOC data type) on conserved segment pairs (see Fig. 1). Enlarged views for interested conserved segment pairs are also provided (see Fig. 2). Orthologous relationships assigned by unit user nodes will be drawn by gray lines linking marked locations.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl002001.png.html" target=_blank>
+				<image src="pl002001t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl002002.png.html" target=_blank>
+				<image src="pl002002t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 1</b></td>
+				<td><b>Fig. 2</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="usage">Usage by Example</a></h3>
+		<ol>
+		<li>
+		File -&gt; Load, open the file "inparanoidTax9606Tax10090.tree"
+		<br clear=all>
+		
+		<li>
+		Plugins -&gt; Conserved Segment View. A window called "Conserved Segment View Control" will appear, usually in the upper-left corner of your screen.
+		<table border=0 align=center>
+			<tr><td><image src="pl002003.png" align=right></td></tr>
+			<tr align=center><td><b>Fig. 3</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Double-click on "Synteny Mapping #1", then a window called "ConservedSegmentView - Synteny Mapping #1" will appear. This window will display all conserved segment pairs. Use <i>Scale Down</i> and <i>Scale Up</i> buttons to adjust segments to feasible sizes.
+		<table border=0 align=center>
+			<tr><td><a href="pl002004.png.html" target=_blank>
+				<image src="pl002004t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 4</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Back to GOBU window, click user node "User Data", then all locations are marked on conserved segment pairs. Orthologous objects in same conserved segment pair will be connected by a gray line.
+		<br clear=all>
+		
+		<li>
+		Check <i>Marked only</i> box (i.e. ensure this option is selected), click unit user node "gropu13639", then all previously marked locations are removed and locations (i.e. LOC P-nodes) <i>under</i> gropu13639 are newly marked. Because un-marked conserved segment pairs will be removed if <i>Marked only</i> is checked, there will be only one conserved segment pair in the ConservedSegmentView window.
+		<br clear=all>
+		
+		<li>
+		Move mouse cursor to "(106105001,107785001)@chr11@Mouse" or "(61025001,63095001)@chr17@Human" and stop for a while, a tool tip will appear. This tool tip tells the ID (ConserveSegment238) of this conserved segment pair.
+		<br clear=all>
+
+		<li>
+		Check <i>Additive</i> box, select a new color in <i>Use color</i> list, then click user node "User Data". Scroll ConservedSegmentView window so that you can see ConserveSegment238. You will see group13639 LOC P-nodes are marked by two colors (Fig. 5, blue circle). group13639 LOC P-nodes will not be removed because checked <i>Additive</i> option ensures the additive drawing.
+		<table border=0 align=center>
+			<tr><td><a href="pl002005.png.html" target=_blank>
+				<image src="pl002005t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 5</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Click <i>Remember</i> button. Every time you click this button, marked locations will be remembered with their assigned colors.
+		<br clear=all>
+		
+		<li>
+		Select a third color in <i>Use color</i> list, un-check <i>Live</i> box (i.e. ensure this option is un-selected), click any user node, then nothing happens in the ConservedSegmentView window. This is because un-checked <i>Live</i> option lets ConservedSegmentView window not to response to user selections immediately.
+		<br clear=all>
+		
+		<li>
+		Ensure user node "group233" is selected, mouse-right-click, select "Conserved Segment Drawing", then group233 LOC P-nodes are marked by the third color. (group 233 locations are also in ConserveSegment238)
+		<br clear=all>
+		
+		<li>
+		Click first <i>Clear</i> button (the one next to <i>Scale Up</i> button), then you will find that only third color markers are cleared. This is because markers of first two colors are remembered.
+		<br clear=all>
+		
+		<li>
+		Double-click somewhere around gropu13639 locations, an enlarged view window called "1 - ConservedSegmentView - Synteny Mapping #1" will appear. Note that a pair of blue dash-line boxes will appear on ConserveSegment238 for indicating the corresponding region of the enlarged view window. In the case that you have multiple enlarged view windows, the numbers appended to blue dash-line boxes and the numbers appended to their window titles will show the correspondence (see Fig. 6, blue and red circle).
+		<table border=0 align=center>
+			<tr><td><a href="pl002006.png.html" target=_blank>
+				<image src="pl002006t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 6</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Move mouse cursor to the edge of enlarged view window, <i>drag</i> (i.e. hold mouse-lef-button and move mouse) to resize window. By widening enlarged view window, you will see the size of corresponding blue dash-line boxes is changed.
+		<br clear=all>
+		
+		<li>
+		The upper coordinate shows the chromosomeal position of first segment, doule-click on it to re-center the enlarged view (i.e. movements of enlarged view region). Try centering your enlarged view to 107280K base-pair.
+		<br clear=all>
+		
+		<li>
+		<i>Scale Down</i> or <i>Scale Up</i> so that you see first segment from 107120K to 107480K.
+		<br clear=all>
+		
+		<li>
+		Drag mouse accross two segment bands and from 107120K to 107480K, a popup menu with two items (<i>label</i> and <i>de-label</i>) will appear (see Fig. 7), then select <i>label</i>. You will find that locations in dragged region will be labeled with their names, i.e. the node names of corresponding R-nodes (see Fig. 8. In this case, node names are refseq protein GIs). For locations assigned with two colors, their labels will be followed by two colored squares. For locations assigned with one colors, their labels will be followed by one colored square.
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl002007.png.html" target=_blank>
+				<image src="pl002007t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl002008.png.html" target=_blank>
+				<image src="pl002008t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 7</b></td>
+				<td><b>Fig. 8</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Move mouse cursor around the enlarged view window and stop for a while, a tool tip will appear.
+		<table border=0 align=center>
+			<tr><td><a href="pl002009.png.html" target=_blank>
+				<image src="pl002009t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 9</b></td></tr>
+		</table>
+			<ul>
+			<li>Upper coordinate: "double click to re-center"
+			<li>Location boxes: corresponding label name and "double-click to label"
+			<li>Colored squares: corresponding information in user tree (the path infomation of this label, i.e. R-node) and "double-click to goto"
+			<li>Lower coordinate: "mouse drag on coordinate for shift"
+			</ul>
+		Drag mouse along lower coordinate, from 62320K to 62080K, then second segment will be shifted. This function may help observing ortholog arrangement.
+		<br clear=all>
+		
+		<li>
+		Click second <i>Clear</i> button (the one next to <i>Remember</i> button), click first <i>Clear</i> button, then you will find that all LOC P-nodes are cleared. Second <i>Clear</i> button is for releasing all remembered locations.
+		<br clear=all>
+		
+		<li>
+		Check <i>Live</i> and <i>Marked only</i>, un-check <i>Additive</i>, set <i>Appearance level</i> of user tree to <i>Unit</i>, then click on any GO node. The drawn locations should belong to <a href="../../operational/index.html#usertreeP2">selected</a> R-nodes, i.e. R-nodes of selected unit nodes.
+		
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="tips">Special Tips</a></h3>
+		<ol>
+		<li>Check <i>Live</i>, <i>Additive</i> and <i>Marked only</i>, set <i>Appearance level</i> of user tree to <i>Unit</i>, then select Search -&gt; Search GO tree. You may input your desired search pattern and options, you will see all related locations of groups by clicking <i>Iterate all</i> button.
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="configTree">Config Tree</a></h3>
+		<i>&lt;ItalicString&gt;</i> means a variable.<p>
+		This plugin obtains synteny mapping configurations from <i><a href="../index.html#configTree">config tree</a></i>. Descendant <i>SyntenyConfig</i> P-nodes of <i>Synteny Mapping Configurations</i> P-node represent synteny mapping configurations. Under each <i>SyntenyConfig</i> P-node, we advise you to use <a href="../../operational/index.html#userTree">R-nodes</a> to represent conserved segment pairs. In each conserved segment pairs, you must use two <i><a href="../index.html#propertyHandlers">LOC</a></i> P-nodes to represent the two conserved segment, also use a <a href="../../operational/index.html#userTree">normal</a> node of the form direction:<i>&lt;forward or reverse&gt;</i> to represent the mapping direction.<p>
+		See files "synteny1.tree" and "synteny2.tree" in <i>config</i> sub-folder for examples.
+
+	</body>
+</html>

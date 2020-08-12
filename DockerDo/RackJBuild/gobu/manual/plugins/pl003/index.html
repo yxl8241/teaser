@@ -1,0 +1,179 @@
+<html>
+	<head><title>GOBU - Plugin - Listing</title>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12601445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<table border=2 align=right><tr><td><a href="../index.html">last level</a></td></tr></table>
+	<body>
+		<h1><a name="top">Listing</a></h1>
+
+		<h3>Contents</h3>
+		<ol>
+		<li><a href="#description">Description</a>
+		<li><a href="#usage">Usage by Example</a>
+		<li><a href="#tips">Special Tips</a>
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="description">Description</a></h3>
+		This plugin will list user-specified information into a table. For example, in an EST annotation pipeline, users would like to list all suspected EST accessions according to their selection. In Fig. 1, the listed EST accessions are of ESTs with molecular function "hydrolase activity" from Skin. For another example, in a microarray experiment, this plugin could list all necessary information like: probe accessions, expression levels, probe gene accessions, descriptions from chip provider (see Fig. 2).
+		<table border=0 align=center>
+			<tr>
+				<td><a href="pl003001.png.html" target=_blank>
+				<image src="pl003001t.png" alt="click to enlarge" align=right>
+				</a></td>
+				<td><a href="pl003002.png.html" target=_blank>
+				<image src="pl003002t.png" alt="click to enlarge" align=right>
+				</a></td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 1</b></td>
+				<td><b>Fig. 2</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="usage">Usage by Example</a></h3>
+		<ol>
+		<li>
+		File -&gt; Load, open the file "eFerret.tree"
+		<br clear=all>
+		
+		<li>
+		Plugins -&gt; Listing. A window called "Information listing" will appear.
+		<table border=0 align=center>
+			<tr><td><a href="pl003003.png.html" target=_blank>
+				<image src="pl003003t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 3</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		To config what kinds of data to be listed, Config -&gt; Config information. A dialog window called "Config listed information" will appear. In this dialog window, there are two lists -- the left one lists all available kinds of nodes to be selected for listing, and the right one lists all kinds of nodes to be listed. In order to list all selected representative nodes, click on "RP" and click the "Add" button. Then "RP" will be added into the right list. You may also double-click on "RP" for adding it.
+		<table border=0 align=center>
+			<tr><td><a href="pl003004.png.html" target=_blank>
+				<image src="pl003004t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 4</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Click "Done" button, then a column with column head "RP" will appear. Drag the edge of "RP" column head, the width will be changed.
+		<table border=0 align=center>
+			<tr><td><a href="pl003005.png.html" target=_blank>
+				<image src="pl003005t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 5</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Back to GOBU window, Search -&gt; Search GO tree, enter "hydrolase activity", then click "Find" button. Repeat click "Find" button until the GO term "hydrolase activity" is selected.
+		<table border=0 align=center>
+			<tr><td><a href="pl003006.png.html" target=_blank>
+				<image src="pl003006t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 6</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		This plugin always lists specified information "available" in the user tree; that is, we have to set "Appearance level" to "Representative" (Fig. 6, red cycle) for listing representative nodes related to GO term "hydrolase activity".
+		<br clear=all>
+
+		<li>
+		To list all representative nodes of function "hydrolase activity" from Skin, click on "Skin" of the user tree (Fig. 7, red cycle), click right mouse button, then select "Information listing" in the popup menu (Fig. 7, blue cycle).
+		<table border=0 align=center>
+			<tr><td><a href="pl003007.png.html" target=_blank>
+				<image src="pl003007t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 7</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		In the resulting list, double-click on any item will go to corresponding node in the user tree. For example, double-click "Skin-717-1" (Fig. 8, red cycle), then the representative node "Skin-717-1" appears (Fig. 8, blud cycle).
+		<table border=0 align=center>
+			<tr><td><a href="pl003008.png.html" target=_blank>
+				<image src="pl003008t.png" alt="click to enlarge" align=right>
+			</a></td></tr>
+			<tr align=center><td><b>Fig. 8</b></td></tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Sometimes we have information other than accessions to be listed; for example, in a microarray experiment, we may want to list not only up-regulated probes but also detailed information of these probes, e.g. expression levels and description given by chip provider of each probe.<br>
+		To do this, this plugin treat the item listed in the first column as the <i><b>leading role</b></i> and the rest columns the <i><b>supporting roles</b></i>. In other words, the leading role is "annotated" by the supporting roles; that is, the relationship between a leading role and one of its supporting role is a ancestor-descendant relationship.
+		<br clear=all>
+		
+		<li>
+		For example, in a microarray experiment, we organize microarray data as in Fig. 9. It is obviously that the representative nodes better play the leading roles, and P-nodes of types "expression1st", "expression2nd", "expression3rd", "expressionAvg", "GeneID", "GeneSymbol", and "description" play the supporting roles. To have the demanded table listing, it is necessary to arrange the column heads in an appropriate order. In this example, we select Config -&gt; Config Information. In the "Config listed information" dialog window, clear the right list then add all items from the left list to the right list, then click "Done" button (be sure to let "RP" item be the first item in the right list).<br>
+		<table border=0 align=center>
+			<tr>
+				<td>
+					<image src="pl003009.png" alt="click to enlarge" align=right>
+				</td>
+				<td>
+					<image src="pl003010.png" alt="click to enlarge" align=right>
+				</td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 9</b></td>
+				<td><b>Fig. 10</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Click on somewhere of the user tree, click right mouse button, select "Information listing" in the popup menu, then selected information will be listed in the table. It should be noticed that, every leading role will be listed at most once; that is, items in the first-column items will be distinct. A leading role may occupy multiple rows in the table in order to place multiple supporting annotations of one single type. For example, there are many GO annotations (green arrows) belong to mwgzebrafish#02109 in Fig. 11, and six rows (blue rectangle) were used for listing all information related with mwgzebrafish#02109 in Fig. 12.
+		<table border=0 align=center>
+			<tr>
+				<td>
+					<image src="pl003011.png" alt="click to enlarge" align=right>
+				</td>
+				<td>
+					<a href="pl003012.png.html" target=_blank>
+						<image src="pl003012t.png" alt="click to enlarge" align=right>
+					</a>
+				</td>
+			</tr>
+			<tr align=center>
+				<td><b>Fig. 11</b></td>
+				<td><b>Fig. 12</b></td>
+			</tr>
+		</table>
+		<br clear=all>
+		
+		<li>
+		Other functions include:
+			<ol type=a>
+			<li>"Save" button: Save listed information into files (including Excel format).
+			<li>"Additive" check-box: Additively listing selected information; that is, previously listed information will not be erased while listing newly selected information.
+			</ol>
+		<br clear=all>
+		
+		</ol>
+
+		<table border=2 align=right><tr><td><a href="#top">top</a></td></tr></table>
+		<h3><a name="tips">Special Tips</a></h3>
+		<ol>
+		<li>(at least for Windows platform) Click any cell of the listing table, and press &lt;ctrl&gt;-A and &lt;ctrl&gt;-C. Now you have copied whole listing content to the clip board. Pressing &lt;ctrl&gt;-V can paste it to programs like Excel or any text editor.
+		<li>In the config window, you may double-click on the left list for adding items to the right list, and you may also double-click on the right list for removing items.
+		</ol>
+
+	</body>
+</html>

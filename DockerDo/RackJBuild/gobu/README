@@ -1,0 +1,26 @@
+GOBU -- Gene Ontology Browsing Utility
+
+===============
+1. Our homepage
+===============
+
+https://gobu.sourceforge.io/
+
+================
+2. Documentation
+================
+
+The index.html file in manual sub-folder
+
+==========
+3. Running
+==========
+
+Windows users could run GOBU by double clicking gobuCmd.bat. In gobuCmd.bat, there
+is only one command for running GOBU using Java Virtual Machine. Mac or
+UN*X users could use this command to run GOBU, or try gobuCmd.sh.
+
+NOTE: The option -Xmx2400M is a specific option of JVM for running GOBU with 2.4GB
+memory, which means you should run GOBU under 64bit environment. You may change it
+for larger amount of memory, but do not exceed the amount of physical memory of your
+computer.
